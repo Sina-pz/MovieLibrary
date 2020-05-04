@@ -1,0 +1,11 @@
+.main-page-container {
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+     height: calc(100vh - 20px); 
+    border: 1px solid red;
+
+}
+
+.main-page-container .div {
+   border: 1px solid green;
+}

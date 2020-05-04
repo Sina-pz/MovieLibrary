@@ -1,0 +1,26 @@
+.movie-item-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-gap: 2px;
+    background-color: rgb(217, 225, 250);
+    padding: 1px;
+    border: 1px solid black;
+}
+  
+.thumbnail-container {
+
+    height: calc(100vh - 45px);
+    overflow: auto;
+}     
+
+
+.movie-item-list-container .button-bar {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 1px;
+    border: 1px solid black;
+               
+}
+
+

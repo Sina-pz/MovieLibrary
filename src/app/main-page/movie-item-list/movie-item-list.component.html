@@ -1,0 +1,17 @@
+<div class="movie-item-list-container">
+
+    <div class="thumbnail-container">
+        <app-thumbnail-item *ngFor="let item of movieItemList;" [movieItem]="item"></app-thumbnail-item>
+    </div>
+
+
+    <div class="button-bar">
+
+        <app-button [text]="addButtonLabel" (buttonClick)="onAddButtonClick()"></app-button>
+
+        <app-button [text]="removeButtonLabel" (buttonClick)="onRmvButtonClick()"></app-button>
+
+    </div>
+
+</div>
+

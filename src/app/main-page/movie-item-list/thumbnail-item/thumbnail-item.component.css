@@ -1,0 +1,13 @@
+.thumbnail-item-container {
+
+    border-bottom: 1px solid black;
+
+}
+
+
+.thumbnail-item-container .item-label {
+
+    font-family: 'Times';
+    font-size: 8px;
+
+}

@@ -1,0 +1,6 @@
+.item-detail-container {
+  
+   border: solid 1px green;
+   height: calc(100vh - 21px);
+    
+}
