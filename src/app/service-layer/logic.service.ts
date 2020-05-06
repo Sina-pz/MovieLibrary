@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { MovieItem } from '../models/movie-item';
 import { MockDB } from '../models/mock-db';
 import { BehaviorSubject } from 'rxjs';
-import { Mock } from 'protractor/built/driverProviders';
 
 
 @Injectable({
@@ -11,14 +10,15 @@ import { Mock } from 'protractor/built/driverProviders';
 })
 export class LogicService {
   public groupListSubject = new BehaviorSubject<MovieGroup[]>([]);
-  public movieItemList: MovieItem[];
   public groupList: MovieGroup[];
-  public filteredMovieItemListSubject = new BehaviorSubject<MovieItem[]>([]);
   public selectedGroupId: number;
+
   public selectedMovieItemId: number;
+  public movieItemList: MovieItem[];
+  public filteredMovieItemListSubject = new BehaviorSubject<MovieItem[]>([]);
 
   constructor() {
-    const db = new MockDB();
+    let db: MockDB = new MockDB();
     this.groupList = db.getGroupList();
     this.groupListSubject.next(this.groupList);
     this.movieItemList = db.getMovieItemList();
