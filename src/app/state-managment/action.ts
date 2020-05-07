@@ -1,11 +1,18 @@
+import { MovieItem } from 'src/app/models/movie-item';
 import { Action } from '@ngrx/store';
 import { MovieGroup } from '../models/movie-group';
 
 
+
 export enum MovieGroupActionName {
-    Create = '[MovieGroup] Create MovieGroup',
+    Create = '[MovieGroup] Create MovieGroup',  // agar click mikonim groupId save action nist?
     CreateSuccess = '[MovieGroup] Create MovieGroup Success',
     CreateFailed = '[MovieGroup] Create MovieGroup Failed'
+}
+export enum MovieItemActionName {
+    Create = '[MovieItem] Create MovieItem',
+    CreateSuccess = '[MovieItem] Create MovieItem Success',
+    CreateFailed = '[MovieItem] Create MovieItem Failed'
 }
 
 export class CreateMoveGroup implements Action {
@@ -23,4 +30,21 @@ export class CreateMoveGroupFailed implements Action {
     constructor() {}
 }
 
+export class CreateMoveItem implements Action {
+    public readonly type = MovieItemActionName.Create;
+    constructor(public item: MovieItem) {}
+}
+
+export class CreateMoveItemSuccess implements Action {
+    public readonly type = MovieItemActionName.CreateSuccess;
+    constructor(public item: MovieItem) {}
+}
+
+export class CreateMoveItemFailed implements Action {
+    public readonly type = MovieItemActionName.CreateFailed;
+    constructor() {}
+}
+
 export type MovieGroupAction = CreateMoveGroup | CreateMoveGroupSuccess | CreateMoveGroupFailed;
+export type MovieItemAction  = CreateMoveItem  | CreateMoveItemSuccess  | CreateMoveItemFailed;
+
