@@ -1,5 +1,6 @@
+import { MovieItem } from 'src/app/models/movie-item';
 import { MovieGroup } from './../models/movie-group';
-import { Action, createAction, props } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
 
 export enum MovieGroupActionName {
@@ -8,11 +9,26 @@ export enum MovieGroupActionName {
     CreateFailed = '[MovieGroup] Create MovieGroup Failed'
 }
 
-export const createMovieGroup = createAction(MovieGroupActionName.Create,
+export enum MovieItemActionName {
+    Create = '[MovieItem] Create MovieItem',
+    CreateSuccess = '[MovieItem] Create MovieItem Success',
+    CreateFailed = '[MovieItem] Create MovieItem Failed'
+}
+
+
+export const createMovieGroup = createAction(MovieItemActionName.Create,
         props<{group: MovieGroup}>());
 export const createMovieGroupSuccess = createAction(MovieGroupActionName.CreateSuccess,
         props<{group: MovieGroup}>());
 export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFailed);
+
+export const createMovieItem = createAction(MovieItemActionName.Create,
+    props<{Item: MovieItem}>());
+export const createMovieItemSuccess = createAction(MovieItemActionName.CreateSuccess,
+    props<{Item: MovieItem}>());
+export const createMovieItemFailed = createAction(MovieItemActionName.CreateFailed);
+
+
 
 
 
