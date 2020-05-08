@@ -5,7 +5,7 @@ import { MovieGroup } from '../models/movie-group';
 
 
 export enum MovieGroupActionName {
-    Create = '[MovieGroup] Create MovieGroup',  // agar click mikonim groupId save action nist?
+    Create = '[MovieGroup] Create MovieGroup',
     CreateSuccess = '[MovieGroup] Create MovieGroup Success',
     CreateFailed = '[MovieGroup] Create MovieGroup Failed'
 }
