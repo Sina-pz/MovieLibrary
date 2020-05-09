@@ -1,6 +1,8 @@
+import { GroupListComponent } from './group-list.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GroupListComponent } from './group-list.component';
+// import { GroupListComponent } from "./GroupListComponent";
+
 
 describe('GroupListComponent', () => {
   let component: GroupListComponent;

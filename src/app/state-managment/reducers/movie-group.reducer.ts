@@ -1,4 +1,4 @@
-import * as actions from './../action';
+import * as actions from './../actions/movie-group.action';
 import { initialMovieGroupState } from './../states/movie-group.state';
 import { createReducer, on } from '@ngrx/store';
 

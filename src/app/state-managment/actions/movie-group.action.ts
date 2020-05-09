@@ -1,5 +1,5 @@
 import { MovieItem } from 'src/app/models/movie-item';
-import { MovieGroup } from './../models/movie-group';
+import { MovieGroup } from './../../models/movie-group';
 import { createAction, props } from '@ngrx/store';
 
 
@@ -22,3 +22,5 @@ export const getGroupList = createAction(MovieGroupActionName.GetGroupList);
 export const getGroupListSuccess = createAction(MovieGroupActionName.GetGroupListSuccess,
     props<{groups: MovieGroup[]}>());
 export const getGroupListFailed = createAction(MovieGroupActionName.GetGroupListFailed);
+
+

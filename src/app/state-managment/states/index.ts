@@ -1,12 +1,12 @@
 import { createSelector } from '@ngrx/store';
-import { IMovieItemState } from './movie-item.state';
+import { IMovieItemState, getFilteredMovieItemList, getSelectedMovieItemId } from './movie-item.state';
 import { IMovieGroupState, getGroupList, getSelectedGroupId } from './movie-group.state';
 
 
 
 export interface IAppState {
     // reducer?: RouterReducerState;
-    movieGroupState: IMovieGroupState;  // yek variable az noe interface kamel, yani khodesh 2 ta variable states dare
+    movieGroupState: IMovieGroupState;
     movieItemState: IMovieItemState;
 }
 
@@ -16,3 +16,6 @@ export const selectGroupList = createSelector(selectMovieGroupState, getGroupLis
 export const selectSelectedGroupId = createSelector(selectMovieGroupState, getSelectedGroupId);
 
 
+export const selectMovieItemState = (state: IAppState) => state.movieItemState;
+export const selectFilteredMovieItemList = createSelector(selectMovieItemState, getFilteredMovieItemList);
+export const selectSelectedMovieItemId = createSelector(selectMovieItemState, getSelectedMovieItemId);

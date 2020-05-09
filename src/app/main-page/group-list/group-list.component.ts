@@ -27,7 +27,6 @@ export class GroupListComponent implements OnInit {
         }
 
   ngOnInit(): void {
-    
     this.store.select(selectors.selectGroupList).subscribe(list => this.fromGroupList(list));
   }
 
