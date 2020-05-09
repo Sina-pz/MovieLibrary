@@ -2,6 +2,9 @@ import { ButtonComponent } from './../button/button.component';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MovieGroup } from 'src/app/models/movie-group';
 import { LogicService } from 'src/app/service-layer/logic.service';
+import { IAppState } from 'src/app/state-managment/states';
+import { Store } from '@ngrx/store';
+import * as selectors from '../../state-managment/states';
 
 @Component({
   selector: 'app-group-list',
@@ -18,11 +21,14 @@ export class GroupListComponent implements OnInit {
   groupSelectId: EventEmitter<number> = new EventEmitter();
 
 
-  constructor(private logic: LogicService) {
-    logic.groupListSubject.asObservable().subscribe(list => this.fromGroupList(list));
+  constructor(private store: Store<IAppState>) {
+
+    // logic.groupListSubject.asObservable().subscribe(list => this.fromGroupList(list));
         }
 
   ngOnInit(): void {
+    
+    this.store.select(selectors.selectGroupList).subscribe(list => this.fromGroupList(list));
   }
 
   private fromGroupList(list: MovieGroup[]): void {
@@ -31,7 +37,7 @@ export class GroupListComponent implements OnInit {
   }
 
   onAddButtonClick() {
-    this.logic.addGroup();
+   // this.logic.addGroup();
     console.log ('hi addGroup click');
    // (clickedButton)="onButtonSelect($event)"
    //  this.groupIdSelect = groupId;
@@ -39,7 +45,7 @@ export class GroupListComponent implements OnInit {
   }
 
   onRmvButtonClick() {
-    this.logic.removeGroup();
+    // this.logic.removeGroup();
     console.log ('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
    //  this.groupIdSelect = groupId;

@@ -19,7 +19,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { movieGroupReducer } from './state-managment/reducer';
 
 
 
@@ -37,7 +36,9 @@ import { movieGroupReducer } from './state-managment/reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({movieItemState: _movieItemReducer}, {movieGroupState: _movieGroupReducer}),
+    StoreModule.forRoot({
+        movieItemState: _movieItemReducer,
+        movieGroupState: _movieGroupReducer}),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([])
