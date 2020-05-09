@@ -1,3 +1,6 @@
+import { _movieGroupReducer } from './state-managment/reducers/movie-group.reducer';
+import { _movieItemReducer } from './state-managment/reducers/movie-item.reducer';
+
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -34,7 +37,7 @@ import { movieGroupReducer } from './state-managment/reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({movieGroupState: movieGroupReducer}, {}),
+    StoreModule.forRoot({movieItemState: _movieItemReducer}, {movieGroupState: _movieGroupReducer}),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([])
