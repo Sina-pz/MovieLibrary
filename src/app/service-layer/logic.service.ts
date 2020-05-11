@@ -18,7 +18,7 @@ export class LogicService {
   public filteredMovieItemListSubject = new BehaviorSubject<MovieItem[]>([]);
 
   constructor() {
-    let db: MockDB = new MockDB();
+    const db = new MockDB();
     this.groupList = db.getGroupList();
     this.groupListSubject.next(this.groupList);
     this.movieItemList = db.getMovieItemList();

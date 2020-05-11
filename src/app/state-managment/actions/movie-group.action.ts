@@ -4,6 +4,7 @@ import { createAction, props } from '@ngrx/store';
 
 
 export enum MovieGroupActionName {
+
     Create = '[MovieGroup] Create MovieGroup',
     CreateSuccess = '[MovieGroup] Create MovieGroup Success',
     CreateFailed = '[MovieGroup] Create MovieGroup Failed',
@@ -13,14 +14,17 @@ export enum MovieGroupActionName {
 }
 
 export const createMovieGroup = createAction(MovieGroupActionName.Create,
-        props<{group: MovieGroup}>());
+        props<{group: MovieGroup}>()); // method
 export const createMovieGroupSuccess = createAction(MovieGroupActionName.CreateSuccess,
         props<{group: MovieGroup}>());
 export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFailed);
 
+
 export const getGroupList = createAction(MovieGroupActionName.GetGroupList);
 export const getGroupListSuccess = createAction(MovieGroupActionName.GetGroupListSuccess,
-    props<{groups: MovieGroup[]}>());
+        props<{groups: MovieGroup[]}>());
 export const getGroupListFailed = createAction(MovieGroupActionName.GetGroupListFailed);
+
+
 
 

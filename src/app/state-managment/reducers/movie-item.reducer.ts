@@ -2,16 +2,15 @@ import * as actions from './../actions/movie-item.action';
 import { createReducer, on } from '@ngrx/store';
 import { initialMovieItemState } from '../states/movie-item.state';
 
-export const _movieItemReducer = createReducer(
-  initialMovieItemState,
-  on(actions.createMovieItem, (oldState) => oldState),
+export const _movieItemReducer = createReducer(initialMovieItemState,
+  on(actions.createMovieItem),
   on(actions.createMovieItemSuccess, (oldState, action) => {
-    const newGroupList = oldState.movieItemList.map((item) => item);
-    newGroupList.push(action.Item);
+    const newMovieItemList = oldState.movieItemList.map(item => item);
+    newMovieItemList.push(action.Item);
 
     return {
       ...oldState,
-      groupList: newGroupList,
+      movieItemList: newMovieItemList,
     };
   }),
   on(actions.createMovieItemFailed),
@@ -23,7 +22,16 @@ export const _movieItemReducer = createReducer(
       groupList: action.Items
     };
   }),
-  on(actions.getFilteredMovieItemListFailed)
+  on(actions.getFilteredMovieItemListFailed),
+  ///////////////////////////////////////////////////////////////////
+  on(actions.getMovieItemList),
+  on(actions.getMovieItemListSuccess, (oldState, action) => {
+    return {
+      ...oldState,
+      groupList: action.items
+    };
+  }),
+  on(actions.getMovieItemListFailed),
 
 );
 
