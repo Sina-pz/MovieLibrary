@@ -20,6 +20,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { MovieItemEffects } from './state-managment/effects/movie-item.effect';
 
 
 
@@ -42,7 +43,7 @@ import { EffectsModule } from '@ngrx/effects';
         movieGroupState: _movieGroupReducer}),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([MovieItemEffects])
   ],
   providers: [],
   bootstrap: [MainPageComponent]

@@ -24,7 +24,12 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,  // stat
         }),
     on(actions.loadGroupListFailed),
     ///////////////////////////////////////////////////////////////////
-    on(actions.selectGroupId),
+    on(actions.selectGroupId, (oldState, action) => {
+        return {
+            ...oldState,
+            selectedGroupId: action.selectedGroupId
+        };
+    }),
     );
 
 export function movieGroupReducer(oldState, action) {
