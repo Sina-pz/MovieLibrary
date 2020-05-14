@@ -27,5 +27,5 @@ export const loadGroupListSuccess = createAction(MovieGroupActionName.LoadGroupL
 export const loadGroupListFailed = createAction(MovieGroupActionName.LoadGroupListFailed);
 
 export const selectGroupId = createAction(MovieGroupActionName.SelectGroupId,
-        props<{groupId: number}>()); // method
+        props<{selectedGroupId: number}>()); // method
 

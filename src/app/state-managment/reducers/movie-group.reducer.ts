@@ -26,13 +26,12 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,  // stat
     on(actions.loadGroupListFailed),
     ///////////////////////////////////////////////////////////////////
     on(actions.selectGroupId, (oldState, action) => {
-
         return {
             ...oldState,
-            selectedGroupId: action.selectedGroupId   // ??? propery ha ba 2 noghte
+            selectedGroupId: action.selectedGroupId
         };
     }),
-);
+    );
 
 export function movieGroupReducer(oldState, action) {
     return _movieGroupReducer(oldState, action);

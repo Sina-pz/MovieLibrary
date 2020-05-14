@@ -19,7 +19,8 @@ export enum MovieItemActionName {
 export const loadMovieItemList = createAction(MovieItemActionName.LoadMovieItemList);
 export const loadMovieItemListSuccess = createAction(MovieItemActionName.LoadMovieItemSuccess,
     props<{items: MovieItem[]}>());
-export const loadMovieItemListFailed = createAction(MovieItemActionName.LoadMovieItemFailed);
+export const loadMovieItemListFailed = createAction(MovieItemActionName.LoadMovieItemFailed,
+    props<{message: string}>());
 
 export const createMovieItem = createAction(MovieItemActionName.Create,
     props<{Item: MovieItem}>()); // method
@@ -28,4 +29,4 @@ export const createMovieItemSuccess = createAction(MovieItemActionName.CreateSuc
 export const createMovieItemFailed = createAction(MovieItemActionName.CreateFailed);
 
 export const filterMovieItemList = createAction(MovieItemActionName.FilterMovieItemList,
-    props<{items: MovieItem[]}>());
+    props<{selectedGroupId: number}>());

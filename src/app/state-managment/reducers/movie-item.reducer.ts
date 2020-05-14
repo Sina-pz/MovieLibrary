@@ -27,10 +27,9 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   on(actions.filterMovieItemList, (oldState, action) => {
     return {
       ...oldState,
-      gro
+      filteredMovieItemList: oldState.movieItemList.filter(item => item.groupId === action.selectedGroupId)
     };
   }),
-
 );
 
 export function movieItemReducer(oldState, action) {
