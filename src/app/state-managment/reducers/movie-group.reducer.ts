@@ -1,3 +1,4 @@
+import { selectSelectedGroupId } from './../states/index';
 import * as actions from './../actions/movie-group.action';
 import { initialMovieGroupState } from './../states/movie-group.state';
 import { createReducer, on } from '@ngrx/store';
@@ -24,8 +25,14 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,  // stat
         }),
     on(actions.loadGroupListFailed),
     ///////////////////////////////////////////////////////////////////
-    on(actions.selectGroupId),
-    );
+    on(actions.selectGroupId, (oldState, action) => {
+
+        return {
+            ...oldState,
+            selectedGroupId: action.selectedGroupId   // ??? propery ha ba 2 noghte
+        };
+    }),
+);
 
 export function movieGroupReducer(oldState, action) {
     return _movieGroupReducer(oldState, action);
