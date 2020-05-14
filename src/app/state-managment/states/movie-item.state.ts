@@ -12,5 +12,6 @@ export const initialMovieItemState: IMovieItemState = {
     selectedMovieItemId : undefined
 };
 
+export const getMovieItemList = (state: IMovieItemState) => state.movieItemList; // page is loading //\\//
 export const getFilteredMovieItemList = (state: IMovieItemState) => state.filteredMovieItemList;
 export const getSelectedMovieItemId = (state: IMovieItemState) => state.selectedMovieItemId;

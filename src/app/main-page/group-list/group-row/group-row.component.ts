@@ -26,7 +26,7 @@ export class GroupRowComponent implements OnInit {
       // const groupId: number = this.group.id;
       // this.logic.updateFilteredItemsByGroupId(this.group.id); //props<{groupId: number}>()); // method
       // this.store.dispatch(selectGroupId(props:{this.group.id}));  (props: P & NotAllowedCheck<P>)
-      this.store.dispatch(selectGroupId({selectedGroupId: this.group.id}));
+         this.store.dispatch(selectGroupId({groupId: this.group.id}));
       // this.props.Store.dispatch(selectGroupId(this.group.id));
     }
   }
