@@ -5,23 +5,21 @@ import { createAction, props } from '@ngrx/store';
 
 export enum MovieItemActionName {
 
-    GetMovieItemList = '[MovieItem] Get MovieItem List',
-    GetMovieItemSuccess = '[MovieItem] Get MovieItem List Success',
-    GetMovieItemFailed = '[MovieItem] Get MovieItem List Failed',
+    LoadMovieItemList = '[MovieItem] Get MovieItem List',
+    LoadMovieItemSuccess = '[MovieItem] Get MovieItem List Success',
+    LoadMovieItemFailed = '[MovieItem] Get MovieItem List Failed',
     Create = '[MovieItem] Create MovieItem',
     CreateSuccess = '[MovieItem] Create MovieItem Success',
     CreateFailed = '[MovieItem] Create MovieItem Failed',
-    GetFilteredMovieItemList = '[MovieItem] Get GetFilteredMovieItem List',
-    GetFilteredMovieItemListSuccess = '[MovieItem] Get GetFilteredMovieItem List Success',
-    GetFilteredMovieItemListFailed = '[MovieItem] Get GetFilteredMovieItem List Failed',
+    FilterMovieItemList = '[MovieItem] Filter MovieItemList',
+
 }
 
 
-
-export const getMovieItemList = createAction(MovieItemActionName.GetMovieItemList);
-export const getMovieItemListSuccess = createAction(MovieItemActionName.GetMovieItemSuccess,
+export const loadMovieItemList = createAction(MovieItemActionName.LoadMovieItemList);
+export const loadMovieItemListSuccess = createAction(MovieItemActionName.LoadMovieItemSuccess,
     props<{items: MovieItem[]}>());
-export const getMovieItemListFailed = createAction(MovieItemActionName.GetMovieItemFailed);
+export const loadMovieItemListFailed = createAction(MovieItemActionName.LoadMovieItemFailed);
 
 export const createMovieItem = createAction(MovieItemActionName.Create,
     props<{Item: MovieItem}>()); // method
@@ -29,7 +27,5 @@ export const createMovieItemSuccess = createAction(MovieItemActionName.CreateSuc
     props<{Item: MovieItem}>());
 export const createMovieItemFailed = createAction(MovieItemActionName.CreateFailed);
 
-export const getFilteredMovieItemList = createAction(MovieItemActionName.GetFilteredMovieItemList);
-export const getFilteredMovieItemListSuccess = createAction(MovieItemActionName.GetFilteredMovieItemListSuccess,
-    props<{Items: MovieItem[]}>());
-export const getFilteredMovieItemListFailed = createAction(MovieItemActionName.GetFilteredMovieItemListFailed);
+export const filterMovieItemList = createAction(MovieItemActionName.FilterMovieItemList,
+    props<{items: MovieItem[]}>());

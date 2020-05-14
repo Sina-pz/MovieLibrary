@@ -15,14 +15,16 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,  // stat
         }),
     on(actions.createMovieGroupFailed),
         ///////////////////////////////////////////////////////////////////
-        on(actions.getGroupList),
-        on(actions.getGroupListSuccess, (oldState, action) => {
+        on(actions.loadGroupList),
+        on(actions.loadGroupListSuccess, (oldState, action) => {
             return {
                 ...oldState,
                 groupList: action.groups
             };
         }),
-        on(actions.getGroupListFailed)
+    on(actions.loadGroupListFailed),
+    ///////////////////////////////////////////////////////////////////
+    on(actions.selectGroupId),
     );
 
 export function movieGroupReducer(oldState, action) {

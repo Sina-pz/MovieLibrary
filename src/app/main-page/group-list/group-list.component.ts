@@ -5,6 +5,7 @@ import { LogicService } from 'src/app/service-layer/logic.service';
 import { IAppState } from 'src/app/state-managment/states';
 import { Store } from '@ngrx/store';
 import * as selectors from '../../state-managment/states';
+import { selectGroupId } from '../../state-managment/actions/movie-group.action';
 
 @Component({
   selector: 'app-group-list',
@@ -28,7 +29,7 @@ export class GroupListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(selectors.selectGroupList).subscribe(list => this.fromGroupList(list));
-  }
+     }
 
   private fromGroupList(list: MovieGroup[]): void {
     this.groupList = list;
@@ -41,7 +42,7 @@ export class GroupListComponent implements OnInit {
    // (clickedButton)="onButtonSelect($event)"
    //  this.groupIdSelect = groupId;
    // console.log('click on a group which is:' + groupId);
-  }
+      }
 
   onRmvButtonClick() {
     // this.logic.removeGroup();

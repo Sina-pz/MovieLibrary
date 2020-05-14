@@ -37,7 +37,7 @@ export class MovieItemListComponent implements OnInit {
   }
 
   onRmvButtonClick() {
-    // this.logic.removeMovieItem();
+     // this.logic.removeMovieItem();
     console.log ('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
    //  this.groupIdSelect = groupId;

@@ -8,9 +8,10 @@ export enum MovieGroupActionName {
     Create = '[MovieGroup] Create MovieGroup',
     CreateSuccess = '[MovieGroup] Create MovieGroup Success',
     CreateFailed = '[MovieGroup] Create MovieGroup Failed',
-    GetGroupList = '[MovieGroup] Get MovieGroup List',
-    GetGroupListSuccess = '[MovieGroup] Get MovieGroup List Success',
-    GetGroupListFailed = '[MovieGroup] Get MovieGroup List Failed',
+    LoadGroupList = '[MovieGroup] Load MovieGroup List',
+    LoadGroupListSuccess = '[MovieGroup] Load MovieGroup List Success',
+    LoadGroupListFailed = '[MovieGroup] Load MovieGroup List Failed',
+    SelectGroupId = '[MovieGroup] Select GroupId',
 }
 
 export const createMovieGroup = createAction(MovieGroupActionName.Create,
@@ -20,11 +21,11 @@ export const createMovieGroupSuccess = createAction(MovieGroupActionName.CreateS
 export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFailed);
 
 
-export const getGroupList = createAction(MovieGroupActionName.GetGroupList);
-export const getGroupListSuccess = createAction(MovieGroupActionName.GetGroupListSuccess,
+export const loadGroupList = createAction(MovieGroupActionName.LoadGroupList);
+export const loadGroupListSuccess = createAction(MovieGroupActionName.LoadGroupListSuccess,
         props<{groups: MovieGroup[]}>());
-export const getGroupListFailed = createAction(MovieGroupActionName.GetGroupListFailed);
+export const loadGroupListFailed = createAction(MovieGroupActionName.LoadGroupListFailed);
 
-
-
+export const selectGroupId = createAction(MovieGroupActionName.SelectGroupId,
+        props<{groupId: number}>()); // method
 

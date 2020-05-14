@@ -1,6 +1,9 @@
+import { selectGroupId } from './../../../state-managment/actions/movie-group.action';
+import { LogicService } from './../../../service-layer/logic.service';
+import { MovieGroup } from './../../../models/movie-group';
+import { IAppState } from './../../../state-managment/states/index';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { MovieGroup } from 'src/app/models/movie-group';
-import { LogicService } from 'src/app/service-layer/logic.service';
+import { Store, props } from '@ngrx/store';
 
 @Component({
   selector: 'app-group-row',
@@ -12,7 +15,7 @@ export class GroupRowComponent implements OnInit {
   @Input()
   group: MovieGroup;
 
-  constructor(private logic: LogicService) {
+  constructor(private logic: LogicService, private store: Store<IAppState>) {
    }
 
   ngOnInit(): void {
@@ -20,7 +23,11 @@ export class GroupRowComponent implements OnInit {
 
   onClick() {
     if (this.group) {
-      this.logic.updateFilteredItemsByGroupId(this.group.id);
+      // const groupId: number = this.group.id;
+      // this.logic.updateFilteredItemsByGroupId(this.group.id); //props<{groupId: number}>()); // method
+      // this.store.dispatch(selectGroupId(props:{this.group.id}));  (props: P & NotAllowedCheck<P>)
+         this.store.dispatch(selectGroupId(this.group.id));
+      // this.props.Store.dispatch(selectGroupId(this.group.id));
     }
   }
 }

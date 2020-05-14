@@ -15,23 +15,21 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   }),
   on(actions.createMovieItemFailed),
   ///////////////////////////////////////////////////////////////////
-  on(actions.getFilteredMovieItemList),
-  on(actions.getFilteredMovieItemListSuccess, (oldState, action) => {
-    return {
-      ...oldState,
-      groupList: action.Items
-    };
-  }),
-  on(actions.getFilteredMovieItemListFailed),
-  ///////////////////////////////////////////////////////////////////
-  on(actions.getMovieItemList),
-  on(actions.getMovieItemListSuccess, (oldState, action) => {
+  on(actions.loadMovieItemList),
+  on(actions.loadMovieItemListSuccess, (oldState, action) => {
     return {
       ...oldState,
       groupList: action.items
     };
   }),
-  on(actions.getMovieItemListFailed),
+  on(actions.loadMovieItemListFailed),
+  ///////////////////////////////////////////////////////////////////
+  on(actions.filterMovieItemList, (oldState, action) => {
+    return {
+      ...oldState,
+      gro
+    };
+  }),
 
 );
 
