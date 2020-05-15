@@ -12,6 +12,7 @@ export enum MovieItemActionName {
     CreateSuccess = '[MovieItem] Create MovieItem Success',
     CreateFailed = '[MovieItem] Create MovieItem Failed',
     FilterMovieItemList = '[MovieItem] Filter MovieItemList',
+    selectMovieItem = '[MovieItem] Select MovieItem',
 
 }
 
@@ -19,13 +20,18 @@ export enum MovieItemActionName {
 export const loadMovieItemList = createAction(MovieItemActionName.LoadMovieItemList);
 export const loadMovieItemListSuccess = createAction(MovieItemActionName.LoadMovieItemSuccess,
     props<{items: MovieItem[]}>());
-export const loadMovieItemListFailed = createAction(MovieItemActionName.LoadMovieItemFailed);
+export const loadMovieItemListFailed = createAction(MovieItemActionName.LoadMovieItemFailed,
+   props<{message: string}>());
 
-export const createMovieItem = createAction(MovieItemActionName.Create,
-    props<{Item: MovieItem}>()); // method
+export const createMovieItem = createAction(MovieItemActionName.Create);
+//    props<{Item: MovieItem}>()); // method ???????
 export const createMovieItemSuccess = createAction(MovieItemActionName.CreateSuccess,
-    props<{Item: MovieItem}>());
-export const createMovieItemFailed = createAction(MovieItemActionName.CreateFailed);
+    props<{item: MovieItem}>());
+export const createMovieItemFailed = createAction(MovieItemActionName.CreateFailed,
+    props<{message: string}>());
 
 export const filterMovieItemList = createAction(MovieItemActionName.FilterMovieItemList,
     props<{selectedGroupId: number}>());
+
+export const selectMovieItem = createAction(MovieItemActionName.selectMovieItem,
+    props<{ selectedId: number }>());

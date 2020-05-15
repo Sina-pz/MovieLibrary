@@ -6,7 +6,7 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   on(actions.createMovieItem),
   on(actions.createMovieItemSuccess, (oldState, action) => {
     const newMovieItemList = oldState.movieItemList.map(item => item);
-    newMovieItemList.push(action.Item);
+    newMovieItemList.push(action.item);
 
     return {
       ...oldState,
@@ -15,7 +15,7 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   }),
   on(actions.createMovieItemFailed),
   ///////////////////////////////////////////////////////////////////
-  on(actions.loadMovieItemList),
+  on(actions.loadMovieItemList),   // in agar nabashe chi mishe ??
   on(actions.loadMovieItemListSuccess, (oldState, action) => {
     return {
       ...oldState,
@@ -30,6 +30,14 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
       filteredMovieItemList: oldState.movieItemList.filter(item => item.groupId === action.selectedGroupId )
     };
   }),
+/////////
+on(actions.selectMovieItem, (oldState, action) => {
+  return {
+    ...oldState,
+    selectedMovieItemId: action.selectedId
+  };
+})
+
 
 );
 
