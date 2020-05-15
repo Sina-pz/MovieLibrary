@@ -16,8 +16,7 @@ export class MovieItemEffects {
     private httpService: HttpService
   ) {}
 
-
-    loadMovies$ = createEffect(() =>
+  loadMovies$ = createEffect(() =>
   this.actions$.pipe(
     ofType(actions.loadMovieItemList),
     mergeMap(() =>
@@ -32,15 +31,7 @@ export class MovieItemEffects {
     )
   )
 );
-
 ///////////////////
-filterMovies$ = createEffect(() =>
-this.actions$.pipe(
-  ofType(actions.filterMovieItemList),
-  actions.filterMovieItemList({selectedGroupId: number})
-  ) // pipe
-);
-//////////////////
 creatMovie$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.createMovieItem),
@@ -56,12 +47,19 @@ this.actions$.pipe(
   )
 )
 );
+//////////////////
+filterMovies$ = createEffect(() =>
+this.actions$.pipe(
+  ofType(actions.filterMovieItemList),
+  actions.filterMovieItemList({selectedGroupId: number})
+  )
+);
 ///////////////
 selectMovie$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.selectMovieItem),
-  actions.selectMovieItem({selectedGroupId: number})
-  ) // pipe
+  actions.selectMovieItem({selectedId: number})
+  )
 );
 //////////////////
 

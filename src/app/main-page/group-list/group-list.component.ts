@@ -40,7 +40,7 @@ export class GroupListComponent implements OnInit {
    // this.logic.addGroup();
     console.log ('hi addGroup click');
    // (clickedButton)="onButtonSelect($event)"
-   //  this.groupIdSelect = groupId;
+   // this.groupIdSelect = groupId;
    // console.log('click on a group which is:' + groupId);
       }
 
