@@ -23,8 +23,8 @@ export const loadMovieItemListSuccess = createAction(MovieItemActionName.LoadMov
 export const loadMovieItemListFailed = createAction(MovieItemActionName.LoadMovieItemFailed,
    props<{message: string}>());
 
-export const createMovieItem = createAction(MovieItemActionName.Create);
-//    props<{Item: MovieItem}>()); // method ???????
+export const createMovieItem = createAction(MovieItemActionName.Create,
+props<{item: MovieItem}>()); // method ???????
 export const createMovieItemSuccess = createAction(MovieItemActionName.CreateSuccess,
     props<{item: MovieItem}>());
 export const createMovieItemFailed = createAction(MovieItemActionName.CreateFailed,

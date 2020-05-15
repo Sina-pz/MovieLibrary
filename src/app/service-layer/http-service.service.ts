@@ -7,9 +7,7 @@ import { MovieItem } from '../models/movie-item';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpServiceService {
-
-  // public movieItemList: MovieItem[];
+export class HttpService {
 
   constructor() { }
 
@@ -25,7 +23,7 @@ export class HttpServiceService {
     return of<MovieGroup[]>(db.getGroupList());
       }
 
-  public creatMovieItem(): Observable<MovieItem> {
+  public creatMovieItem(item: MovieItem): Observable<MovieItem> {
     const db = new MockDB();
     // const randomMovieItem = db.getRandomMovieItemList()[Math.floor(Math.random() * db.getRandomMovieItemList().length)];
     // this.movieItemList.push(randomMovieItem);

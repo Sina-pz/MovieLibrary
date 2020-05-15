@@ -6,6 +6,7 @@ import { IAppState } from 'src/app/state-managment/states';
 import { Store } from '@ngrx/store';
 import * as selectors from '../../state-managment/states';
 import { selectGroupId } from '../../state-managment/actions/movie-group.action';
+import * as actions from '../../state-managment/actions/movie-group.action';
 
 @Component({
   selector: 'app-group-list',
@@ -16,7 +17,7 @@ export class GroupListComponent implements OnInit {
 
   public groupList: MovieGroup[];
   public readonly addButtonLabel = 'Add';
-  public readonly removeButtonLabel = 'Rmv';
+  public readonly removeButtonLabel = 'Remove';
 
   @Output()
   groupSelectId: EventEmitter<number> = new EventEmitter();
@@ -33,12 +34,14 @@ export class GroupListComponent implements OnInit {
 
   private fromGroupList(list: MovieGroup[]): void {
     this.groupList = list;
-    this.fromGroupList(this.groupList);
   }
 
   onAddButtonClick() {
    // this.logic.addGroup();
     console.log ('hi addGroup click');
+    this.store.dispatch(actions.createMovieGroup({
+      group: new MovieGroup()
+    }));
    // (clickedButton)="onButtonSelect($event)"
    // this.groupIdSelect = groupId;
    // console.log('click on a group which is:' + groupId);
