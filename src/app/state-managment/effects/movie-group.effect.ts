@@ -1,9 +1,10 @@
 import { createMovieGroupSuccess, selectGroupId } from './../actions/movie-group.action';
 import { MovieItemActionName, createMovieItemFailed, createMovieItemSuccess } from './../actions/movie-item.action';
-import { HttpServiceService as HttpService } from './../../service-layer/http-service.service';
+import { HttpService as HttpService } from './../../service-layer/http-service.service';
 import { Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';  // ??????/ add nashode ke
 import * as actions from '../actions/movie-group.action';
+import * as movieItemActions from '../actions/movie-item.action';
 import { Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
@@ -36,7 +37,7 @@ export class MovieItemEffects {
 creatGroup$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.createMovieGroup),
-  mergeMap(() =>
+  mergeMap(action =>
     this.httpService.creatGroup().pipe(
       map(data => {
         return actions.createMovieGroupSuccess({group: data});
@@ -49,11 +50,11 @@ this.actions$.pipe(
 )
 );
 //////////
+// filter movieItems on selectedGroupId
 selectGroup$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.selectGroupId),
-  () => {
-   return actions.selectGroupId({selectedGroupId: number}); }
-  ) // pipe
-);
+  map(action => movieItemActions.filterMovieItemList({selectedGroupId: action.selectedGroupId})),
+));
+}
 

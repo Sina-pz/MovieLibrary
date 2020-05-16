@@ -1,6 +1,7 @@
+import { MovieItem } from 'src/app/models/movie-item';
 import { createMovieGroupSuccess } from './../actions/movie-group.action';
-import { MovieItemActionName, createMovieItemFailed, createMovieItemSuccess } from './../actions/movie-item.action';
-import { HttpServiceService as HttpService } from './../../service-layer/http-service.service';
+import { MovieItemActionName, createMovieItemFailed, createMovieItemSuccess, removeItemSuccess, removeItemFailed } from './../actions/movie-item.action';
+import { HttpService as HttpService } from './../../service-layer/http-service.service';
 import { Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';  // ??????/ add nashode ke
 import * as actions from '../actions/movie-item.action';
@@ -35,10 +36,10 @@ export class MovieItemEffects {
 creatMovie$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.createMovieItem),
-  mergeMap(() =>
-    this.httpService.creatMovieItem().pipe(
-      map(data => {
-        return actions.createMovieItemSuccess({item: data});
+  mergeMap(action =>
+    this.httpService.creatMovieItem(action.item).pipe(
+      map(movieItem => {
+        return actions.createMovieItemSuccess({item: movieItem});
       }),
       catchError((error: Error) => {
         return of(actions.createMovieItemFailed(error));
@@ -47,22 +48,21 @@ this.actions$.pipe(
   )
 )
 );
-//////////////////
-filterMovies$ = createEffect(() =>
+///////////////////
+removeMovie$ = createEffect(() =>
 this.actions$.pipe(
-  ofType(actions.filterMovieItemList),
-  actions.filterMovieItemList({selectedGroupId: number})
+  ofType(actions.removeItem),
+  mergeMap(action =>
+    this.httpService.removeMovieItem(action.item).pipe(
+      map(movieItem => {
+        return actions.removeItemSuccess({item: movieItem});
+      }),
+      catchError((error: Error) => {
+        return of(actions.removeItemFailed(error));
+      })
+    )
   )
+)
 );
-///////////////
-selectMovie$ = createEffect(() =>
-this.actions$.pipe(
-  ofType(actions.selectMovieItem),
-  actions.selectMovieItem({selectedId: number})
-  )
-);
-//////////////////
-
-
 
 }
