@@ -20,7 +20,7 @@ export class MovieItemEffects {
   this.actions$.pipe(
     ofType(actions.loadMovieItemList),
     mergeMap(() =>
-      this.httpService.getMovieItemList().pipe(   // get sth from service amd give it to action 
+      this.httpService.getMovieItemList().pipe(   // get sth from service amd give it to action
         map(data => {
           return actions.loadMovieItemListSuccess({items: data}); // yek property khali az action tavasote service populate mishe
         }), // 1
