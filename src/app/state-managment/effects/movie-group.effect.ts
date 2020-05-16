@@ -9,8 +9,9 @@ import { Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 
+// COMMAND: ng generate effect movieGroup - root -m app.module.ts
 @Injectable()
-export class MovieItemEffects {
+export class MovieGroupEffects {
 
   constructor(
     private actions$: Actions,

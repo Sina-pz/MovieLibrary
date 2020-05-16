@@ -3,10 +3,9 @@ import { IMovieItemState, getFilteredMovieItemList, getSelectedMovieItemId, getM
 import { IMovieGroupState, getGroupList, getSelectedGroupId } from './movie-group.state';
 
 export interface IAppState {
-    // reducer?: RouterReducerState;
     movieGroupState: IMovieGroupState;
     movieItemState: IMovieItemState;
-}
+  }
 
 export const selectMovieGroupState = (state: IAppState) => state.movieGroupState;
 export const selectGroupList = createSelector(selectMovieGroupState, getGroupList); //  1- main state branch 2- exact func relate
