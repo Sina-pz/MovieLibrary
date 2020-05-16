@@ -8,6 +8,8 @@ import * as selectors from '../../state-managment/states';
 import { selectGroupId } from '../../state-managment/actions/movie-group.action';
 import * as actions from './../../state-managment/actions/movie-group.action';
 
+
+
 @Component({
   selector: 'app-group-list',
   templateUrl: './group-list.component.html',
@@ -18,7 +20,7 @@ export class GroupListComponent implements OnInit {
   public groupList: MovieGroup[];
   public readonly addButtonLabel = 'Add';
   public readonly removeButtonLabel = 'Rmv';
-
+  private selectedId: number;
   @Output()
   groupSelectId: EventEmitter<number> = new EventEmitter();
 
@@ -45,12 +47,17 @@ export class GroupListComponent implements OnInit {
     this.store.dispatch(actions.createMovieGroup({group: new MovieGroup()}));
       }
 
+      onGroupSelect(idSelect: number) {
+      this.selectedId = idSelect;
+      }
+
   onRmvButtonClick() {
     // this.logic.removeGroup();
     console.log ('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
    //  this.groupIdSelect = groupId;
    //  console.log('click on a group which is:' + groupId);
+    this.store.dispatch(actions.removeGroup({ selectedId: this.selectedId }));
    }
 
 }

@@ -1,4 +1,3 @@
-import { removeGroup } from './../../state-managment/actions/movie-group.action';
 import { MovieItem } from './../../models/movie-item';
 import { createMovieItem, removeItem } from './../../state-managment/actions/movie-item.action';
 import { Store } from '@ngrx/store';
@@ -40,15 +39,18 @@ export class MovieItemListComponent implements OnInit {
     this.store.dispatch(createMovieItem({item: new MovieItem()})); // user vared mikone
   }
 
+  onMoveItemSelect(id: number) {
+    this.selectedId = id;
+  }
+
   onRmvButtonClick() {
-     // this.logic.removeMovieItem();
-    console.log ('hi removeGroup click');
+    // this.logic.removeMovieItem();
+    console.log('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
-   //  this.groupIdSelect = groupId;
-   //  console.log('click on a group which is:' + groupId);
-    this.selectedId = onIdSelect();
-    this.store.dispatch(removeItem({id:})); // user vared mikone
-   }
+    //  this.groupIdSelect = groupId;
+    //  console.log('click on a group which is:' + groupId);
+    this.store.dispatch(removeItem({ selectedMovieItemId: this.selectedId }));
+  }
 
 
 

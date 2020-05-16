@@ -14,6 +14,8 @@ export class GroupRowComponent implements OnInit {
 
   @Input()
   group: MovieGroup;
+  @Output()
+  idSelect: EventEmitter<number> = new EventEmitter();
 
   constructor(private logic: LogicService, private store: Store<IAppState>) {
    }
@@ -28,6 +30,7 @@ export class GroupRowComponent implements OnInit {
       // this.store.dispatch(selectGroupId(props:{this.group.id}));  (props: P & NotAllowedCheck<P>)
          this.store.dispatch(selectGroupId({selectedGroupId: this.group.id}));
       // this.props.Store.dispatch(selectGroupId(this.group.id));
+         this.idSelect.emit(this.group.id);
     }
   }
 }

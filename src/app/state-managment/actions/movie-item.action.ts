@@ -40,8 +40,8 @@ export const selectMovieItem = createAction(MovieItemActionName.selectMovieItem,
     props<{ selectedId: number }>());
 
 export const removeItem = createAction(MovieItemActionName.Remove,
-    props<{ id: number }>());
+    props<{ selectedMovieItemId: number }>());
 export const removeItemSuccess = createAction(MovieItemActionName.RemoveSuccess,
-    props<{ item: MovieItem }>());
+    props<{ items: MovieItem[] }>());
 export const removeItemFailed = createAction(MovieItemActionName.RemoveFailed,
     props<{ message: string }>());

@@ -9,20 +9,22 @@ import { MovieItem } from '../models/movie-item';
 })
 export class HttpService {
 
-  // public movieItemList: MovieItem[];
+  public movieItemList: MovieItem[];
+  public groupList: MovieGroup[];
 
   constructor() { }
 
   public getMovieItemList(): Observable<MovieItem[]> {
     const db = new MockDB();
-    // this.movieItemList = db.getMovieItemList();
-    return of<MovieItem[]>(db.getMovieItemList());
+    this.movieItemList = db.getMovieItemList();
+    return of<MovieItem[]>(this.movieItemList);
     // return this.http.get('/movies');
   }
 
   public getMovieGroupList(): Observable<MovieGroup[]> {
     const db = new MockDB();
-    return of<MovieGroup[]>(db.getGroupList());
+    this.groupList = db.getMovieItemList();
+    return of<MovieGroup[]>(this.groupList);
       }
 
   public creatMovieItem(item: MovieItem): Observable<MovieItem> {
@@ -37,24 +39,21 @@ export class HttpService {
     return of<MovieGroup>(db.getRandomGroupList()[Math.floor(Math.random() * db.getRandomGroupList().length)]);
     }
 
-    public removeMovieItem(): void {
-      console.log(this.selectedMovieItemId);
+    public removeMovieItem(selectedId: number): Observable<MovieItem[]> {
       for (let index = 0; index < this.movieItemList.length; index++) {
-        if (this.selectedMovieItemId === this.movieItemList[index].groupId) {
-          this.movieItemList.splice(index, 1);
+        if (selectedId === this.movieItemList[index].groupId) {
+          return of<MovieItem[]>(this.movieItemList.splice(index, 1));
         }
       }
     }
 
-    // public removeGroup(): void {
-    //   console.log(this.selectedGroupId);
-    //   // this.groupList = this.groupList.filter(item => item.id !== this.selectedGroupId);
-    //   for (let index = 0; index < this.groupList.length; index++) {
-    //     if (this.selectedGroupId === this.groupList[index].id) {
-    //       this.groupList.splice(index, 1);
-    //     }
-    //   }
-    // }
+    public removeGroup(selectedMovieItemId: number): Observable<MovieGroup[]> {
+      for (let index = 0; index < this.groupList.length; index++) {
+        if (selectedMovieItemId === this.groupList[index].id) {
+          return of<MovieGroup[]>(this.groupList.splice(index, 1));
+        }
+      }
+    }
 
 
 }

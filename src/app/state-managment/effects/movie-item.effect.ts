@@ -1,6 +1,5 @@
 import { MovieItem } from 'src/app/models/movie-item';
 import { createMovieGroupSuccess } from './../actions/movie-group.action';
-import { MovieItemActionName, createMovieItemFailed, createMovieItemSuccess, removeItemSuccess, removeItemFailed } from './../actions/movie-item.action';
 import { HttpService as HttpService } from './../../service-layer/http-service.service';
 import { Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';  // ??????/ add nashode ke
@@ -49,13 +48,13 @@ this.actions$.pipe(
 )
 );
 ///////////////////
-removeMovie$ = createEffect(() =>
+removeItem$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.removeItem),
   mergeMap(action =>
-    this.httpService.removeMovieItem(action.item).pipe(
-      map(movieItem => {
-        return actions.removeItemSuccess({item: movieItem});
+    this.httpService.removeMovieItem(action.selectedMovieItemId).pipe(
+      map(movieItems => {
+        return actions.removeItemSuccess({items: movieItems});
       }),
       catchError((error: Error) => {
         return of(actions.removeItemFailed(error));
