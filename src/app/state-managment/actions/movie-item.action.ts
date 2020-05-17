@@ -27,11 +27,7 @@ export const loadMovieItemListFailed = createAction(MovieItemActionName.LoadMovi
     props<{ message: string }>());
 
 export const createMovieItem = createAction(MovieItemActionName.Create,
-<<<<<<< HEAD
-props<{item: MovieItem}>()); // method ???????
-=======
     props<{ item: MovieItem }>());
->>>>>>> Sina/ngrx-reducer
 export const createMovieItemSuccess = createAction(MovieItemActionName.CreateSuccess,
     props<{ item: MovieItem }>());
 export const createMovieItemFailed = createAction(MovieItemActionName.CreateFailed,

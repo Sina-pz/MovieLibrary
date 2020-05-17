@@ -8,12 +8,9 @@ import { MovieItem } from '../models/movie-item';
   providedIn: 'root'
 })
 export class HttpService {
-<<<<<<< HEAD
-=======
 
   public movieItemList: MovieItem[];
   public groupList: MovieGroup[];
->>>>>>> Sina/ngrx-reducer
 
   constructor() { }
 

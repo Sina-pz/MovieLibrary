@@ -25,11 +25,7 @@ export const loadGroupListFailed = createAction(MovieGroupActionName.LoadGroupLi
         props<{message: string}>());
 
 export const createMovieGroup = createAction(MovieGroupActionName.Create,
-<<<<<<< HEAD
-       props<{group: MovieGroup}>());
-=======
         props<{group: MovieGroup}>()); // method
->>>>>>> Sina/ngrx-reducer
 export const createMovieGroupSuccess = createAction(MovieGroupActionName.CreateSuccess,
         props<{group: MovieGroup}>());
 export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFailed,
