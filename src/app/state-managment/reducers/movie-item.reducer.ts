@@ -19,7 +19,7 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   on(actions.removeItemSuccess, (oldState, action) => {
     return {
       ...oldState,
-      movieItemList: action,
+      movieItemList: action
     };
   }),
   on(actions.removeItemFailed),
