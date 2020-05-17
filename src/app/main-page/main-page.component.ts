@@ -19,7 +19,7 @@ export class MainPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.store.dispatch(loadGroupList());  // ?????? ()
+    this.store.dispatch(loadGroupList());
     this.store.dispatch(loadMovieItemList());
   }
 
