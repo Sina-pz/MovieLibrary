@@ -2,6 +2,7 @@ import * as actions from './../actions/movie-item.action';
 import { createReducer, on } from '@ngrx/store';
 import { initialMovieItemState } from '../states/movie-item.state';
 
+// tslint:disable-next-line: variable-name
 export const _movieItemReducer = createReducer(initialMovieItemState,
   on(actions.createMovieItem),
   on(actions.createMovieItemSuccess, (oldState, action) => {
@@ -19,7 +20,7 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   on(actions.removeItemSuccess, (oldState, action) => {
     return {
       ...oldState,
-      movieItemList: action
+      movieItemList: action.items
     };
   }),
   on(actions.removeItemFailed),

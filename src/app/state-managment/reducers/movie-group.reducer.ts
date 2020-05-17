@@ -4,11 +4,11 @@ import { initialMovieGroupState } from './../states/movie-group.state';
 import { createReducer, on } from '@ngrx/store';
 
 
-export const _movieGroupReducer = createReducer(initialMovieGroupState,  // state haro inja vorudi migire
+// tslint:disable-next-line: variable-name
+export const _movieGroupReducer = createReducer(initialMovieGroupState,
     on(actions.createMovieGroup, oldState => oldState),
-    on(actions.createMovieGroupSuccess, (oldState, action) => {      // (a,b) a: state: ImovieGr/ b: ...creatsuccess + prperty:group
-        const newGroupList = oldState.groupList.map(group => group); // ?inja faghat newGroupList doros mishe ya group haro ham tush mirize?
-        newGroupList.push(action.group);
+    on(actions.createMovieGroupSuccess, (oldState, action) => {
+        const newGroupList = oldState.groupList.map(group => group);
 
         return {
             ...oldState,
@@ -16,7 +16,7 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,  // stat
         }),
     on(actions.createMovieGroupFailed),
         ///////////////////////////////////////////////////////////////////
-        on(actions.loadGroupList),
+        on(actions.loadGroupList),  // in karb? unin ke mire effect //
         on(actions.loadGroupListSuccess, (oldState, action) => {
             return {
                 ...oldState,

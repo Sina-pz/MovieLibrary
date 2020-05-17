@@ -25,7 +25,7 @@ export const loadGroupListFailed = createAction(MovieGroupActionName.LoadGroupLi
         props<{message: string}>());
 
 export const createMovieGroup = createAction(MovieGroupActionName.Create,
-        props<{group: MovieGroup}>()); // method
+        props<{group: MovieGroup}>());
 export const createMovieGroupSuccess = createAction(MovieGroupActionName.CreateSuccess,
         props<{group: MovieGroup}>());
 export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFailed,

@@ -1,13 +1,9 @@
-import { ButtonComponent } from './../button/button.component';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MovieGroup } from 'src/app/models/movie-group';
-import { LogicService } from 'src/app/service-layer/logic.service';
 import { IAppState } from 'src/app/state-managment/states';
 import { Store } from '@ngrx/store';
 import * as selectors from '../../state-managment/states';
-import { selectGroupId } from '../../state-managment/actions/movie-group.action';
 import * as actions from '../../state-managment/actions/movie-group.action';
-
 
 
 @Component({
@@ -21,46 +17,43 @@ export class GroupListComponent implements OnInit {
   public readonly addButtonLabel = 'Add';
   public readonly removeButtonLabel = 'Rmv';
   private selectedId: number;
-  @Output()
-  groupSelectId: EventEmitter<number> = new EventEmitter();
 
+  // @Output()
+  // groupSelectId: EventEmitter<number> = new EventEmitter();
 
   constructor(private store: Store<IAppState>) {
-
-    // logic.groupListSubject.asObservable().subscribe(list => this.fromGroupList(list));
-        }
+  // logic.groupListSubject.asObservable().subscribe(list => this.fromGroupList(list));
+  }
 
   ngOnInit(): void {
     this.store.select(selectors.selectGroupList).subscribe(list => this.fromGroupList(list));
-     }
+  }
 
   private fromGroupList(list: MovieGroup[]): void {
     this.groupList = list;
-     }
+  }
 
   onAddButtonClick() {
-   // this.logic.addGroup();
-    console.log ('hi addGroup click');
+    console.log('hi addGroup click');
     this.store.dispatch(actions.createMovieGroup({
       group: new MovieGroup()
     }));
-   // (clickedButton)="onButtonSelect($event)"
-   // this.groupIdSelect = groupId;
-   // console.log('click on a group which is:' + groupId);
-    this.store.dispatch(actions.createMovieGroup({group: new MovieGroup()}));
-      }
+    // (clickedButton)="onButtonSelect($event)"
+    // this.groupIdSelect = groupId;
+    // console.log('click on a group which is:' + groupId);
+  }
 
-      onGroupSelect(idSelect: number) {
-      this.selectedId = idSelect;
-      }
+  onGroupSelect(id: number) {
+    this.selectedId = id;
+  }
 
   onRmvButtonClick() {
     // this.logic.removeGroup();
-    console.log ('hi removeGroup click');
+    console.log('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
-   //  this.groupIdSelect = groupId;
-   //  console.log('click on a group which is:' + groupId);
+    //  this.groupIdSelect = groupId;
+    //  console.log('click on a group which is:' + groupId);
     this.store.dispatch(actions.removeGroup({ selectedId: this.selectedId }));
-   }
+  }
 
 }

@@ -3,7 +3,7 @@ import { LogicService } from './../../../service-layer/logic.service';
 import { MovieGroup } from './../../../models/movie-group';
 import { IAppState } from './../../../state-managment/states/index';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Store, props } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-group-row',
@@ -31,6 +31,7 @@ export class GroupRowComponent implements OnInit {
          this.store.dispatch(selectGroupId({selectedGroupId: this.group.id}));
       // this.props.Store.dispatch(selectGroupId(this.group.id));
          this.idSelect.emit(this.group.id);
+         console.log('group row selectedId' + this.group.id);
     }
   }
 }
