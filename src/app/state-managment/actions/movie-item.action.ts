@@ -13,25 +13,39 @@ export enum MovieItemActionName {
     CreateFailed = '[MovieItem] Create MovieItem Failed',
     FilterMovieItemList = '[MovieItem] Filter MovieItemList',
     selectMovieItem = '[MovieItem] Select MovieItem',
+    Remove        = '[MovieGroup] Remove MovieItem',
+    RemoveSuccess = '[MovieGroup] Remove MovieItem Success',
+    RemoveFailed  = '[MovieGroup] Remove MovieItem Failed',
 
 }
 
 
 export const loadMovieItemList = createAction(MovieItemActionName.LoadMovieItemList);
 export const loadMovieItemListSuccess = createAction(MovieItemActionName.LoadMovieItemSuccess,
-    props<{items: MovieItem[]}>());
+    props<{ items: MovieItem[] }>());
 export const loadMovieItemListFailed = createAction(MovieItemActionName.LoadMovieItemFailed,
-   props<{message: string}>());
+    props<{ message: string }>());
 
 export const createMovieItem = createAction(MovieItemActionName.Create,
+<<<<<<< HEAD
 props<{item: MovieItem}>()); // method ???????
+=======
+    props<{ item: MovieItem }>());
+>>>>>>> Sina/ngrx-reducer
 export const createMovieItemSuccess = createAction(MovieItemActionName.CreateSuccess,
-    props<{item: MovieItem}>());
+    props<{ item: MovieItem }>());
 export const createMovieItemFailed = createAction(MovieItemActionName.CreateFailed,
-    props<{message: string}>());
+    props<{ message: string }>());
 
 export const filterMovieItemList = createAction(MovieItemActionName.FilterMovieItemList,
-    props<{selectedGroupId: number}>());
+    props<{ selectedGroupId: number }>());
 
 export const selectMovieItem = createAction(MovieItemActionName.selectMovieItem,
     props<{ selectedId: number }>());
+
+export const removeItem = createAction(MovieItemActionName.Remove,
+    props<{ selectedMovieItemId: number }>());
+export const removeItemSuccess = createAction(MovieItemActionName.RemoveSuccess,
+    props<{ items: MovieItem[] }>());
+export const removeItemFailed = createAction(MovieItemActionName.RemoveFailed,
+    props<{ message: string }>());

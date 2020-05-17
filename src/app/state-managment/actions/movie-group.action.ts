@@ -25,7 +25,11 @@ export const loadGroupListFailed = createAction(MovieGroupActionName.LoadGroupLi
         props<{message: string}>());
 
 export const createMovieGroup = createAction(MovieGroupActionName.Create,
+<<<<<<< HEAD
        props<{group: MovieGroup}>());
+=======
+        props<{group: MovieGroup}>()); // method
+>>>>>>> Sina/ngrx-reducer
 export const createMovieGroupSuccess = createAction(MovieGroupActionName.CreateSuccess,
         props<{group: MovieGroup}>());
 export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFailed,
@@ -34,9 +38,10 @@ export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFa
 export const selectGroupId = createAction(MovieGroupActionName.SelectGroupId,
         props<{selectedGroupId: number}>());
 
-// export const removeGroup = createAction(MovieGroupActionName.Remove);
-// export const removeSuccess = createAction(MovieGroupActionName.RemoveSuccess,
-//         props<{group: MovieGroup}>());
-// export const removeFailed = createAction(MovieGroupActionName.RemoveFailed,
-//         props<{message: string}>());
+export const removeGroup = createAction(MovieGroupActionName.Remove,
+        props<{ selectedId: number }>());
+export const removeSuccess = createAction(MovieGroupActionName.RemoveSuccess,
+        props<{groups: MovieGroup[]}>());
+export const removeFailed = createAction(MovieGroupActionName.RemoveFailed,
+        props<{message: string}>());
 

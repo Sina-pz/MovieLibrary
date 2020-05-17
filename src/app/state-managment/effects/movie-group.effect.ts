@@ -6,8 +6,9 @@ import { createEffect, ofType, Actions } from '@ngrx/effects';  // ??????/ add n
 import * as actions from '../actions/movie-group.action';
 import * as movieItemActions from '../actions/movie-item.action';
 import { Observable, of } from 'rxjs';
+
 import { mergeMap, map, catchError } from 'rxjs/operators';
-import { Action } from '@ngrx/store';
+
 
 // COMMAND: ng generate effect movieGroup - root -m app.module.ts
 @Injectable()
@@ -16,47 +17,39 @@ export class MovieGroupEffects {
   constructor(
     private actions$: Actions,
     private httpService: HttpService
-  ) {}
+   ) { }
 
-
-  loadGroups$ = createEffect(() =>
-  this.actions$.pipe(
+  loadGroups$ = createEffect(() => this.actions$.pipe(
     ofType(actions.loadGroupList),
-    mergeMap(() =>
-      this.httpService.getMovieGroupList().pipe(
-        map(data => {
-          return actions.loadGroupListSuccess({groups: data});
-        }), // 1
-        catchError((error: Error) => {
-          return of(actions.loadGroupListFailed(error));
-        })  //
-      )
-    )
-  )
-);
-//////////////////
-creatGroup$ = createEffect(() =>
-this.actions$.pipe(
-  ofType(actions.createMovieGroup),
-  mergeMap(() =>
-    this.httpService.creatGroup().pipe(
+    mergeMap(() => this.httpService.getMovieGroupList().pipe(
       map(data => {
-        return actions.createMovieGroupSuccess({group: data});
-      }),
+        return actions.loadGroupListSuccess({ groups: data });
+      }), // 1
       catchError((error: Error) => {
+        return of(actions.loadGroupListFailed(error));
+      }) //
+    ))));
+  //////////////////
+  creatGroup$ = createEffect(() => this.actions$.pipe(
+    ofType(actions.createMovieGroup),
+    mergeMap(action => this.httpService.creatGroup().pipe(
+      map(data => {
+        return actions.createMovieGroupSuccess({ group: data });
+      }), catchError((error: Error) => {
         return of(actions.createMovieGroupFailed(error));
-      })
-    )
-  )
-)
-);
-//////////
-selectGroup$ = createEffect(() =>
-// filter MovieItems on SelectGroupId
-this.actions$.pipe(
-  ofType(actions.selectGroupId),
-  map(action => movieItemActions.filterMovieItemList({selectedGroupId: action.selectedGroupId}) )
-  )
-);
-
+      })))));
+  //////////
+  ///////////////////
+  removeGroup$ = createEffect(() => this.actions$.pipe(
+    ofType(actions.removeGroup),
+    mergeMap(action => this.httpService.removeGroup(action.selectedId).pipe(
+      map(movieGroups => {
+        return actions.removeSuccess({ groups: movieGroups });
+      }), catchError((error: Error) => {
+        return of(actions.removeFailed(error));
+      })))));
+  // filter movieItems on selectedGroupId
+  selectGroup$ = createEffect(() => this.actions$.pipe(
+    ofType(actions.selectGroupId),
+    map(action => movieItemActions.filterMovieItemList({ selectedGroupId: action.selectedGroupId }))));
 }

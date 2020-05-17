@@ -15,8 +15,8 @@ export class ThumbnailItemComponent implements OnInit {
 
   @Input()
    movieItem: MovieItem;
-  // @Output()
-  // idSelect: EventEmitter<number> = new EventEmitter();
+  @Output()
+   idSelect: EventEmitter<number> = new EventEmitter();
 
   constructor(private logic: LogicService, private store: Store<IAppState>) { }
 
@@ -28,9 +28,8 @@ export class ThumbnailItemComponent implements OnInit {
       // this.logic.selectedMovieItemsByGroupId(this.movieItem.groupId);
       // this.logic.removeMovieItem();
       // this.store.dispatch(createMovieItem({Item: this.movieItem}));
-        this.store.dispatch(selectMovieItem({selectedId: this.movieItem.groupId}));
-      // this.idSelect = this.movieItem.groupId;
-      // this.idSelect.emit();
+      this.store.dispatch(selectMovieItem({ selectedId: this.movieItem.groupId }));
+      this.idSelect.emit(this.movieItem.groupId);
     }
   }
 

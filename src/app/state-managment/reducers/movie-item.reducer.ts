@@ -14,6 +14,15 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
     };
   }),
   on(actions.createMovieItemFailed),
+  ///////////////////////////////////
+  on(actions.removeItem),
+  on(actions.removeItemSuccess, (oldState, action) => {
+    return {
+      ...oldState,
+      movieItemList: action
+    };
+  }),
+  on(actions.removeItemFailed),
   ///////////////////////////////////////////////////////////////////
   on(actions.loadMovieItemList),   // in agar nabashe chi mishe ??
   on(actions.loadMovieItemListSuccess, (oldState, action) => {
@@ -27,16 +36,16 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   on(actions.filterMovieItemList, (oldState, action) => {
     return {
       ...oldState,
-      filteredMovieItemList: oldState.movieItemList.filter(item => item.groupId === action.selectedGroupId )
+      filteredMovieItemList: oldState.movieItemList.filter(item => item.groupId === action.selectedGroupId)
     };
   }),
-/////////
-on(actions.selectMovieItem, (oldState, action) => {
-  return {
-    ...oldState,
-    selectedMovieItemId: action.selectedId
-  };
-})
+  /////////
+  on(actions.selectMovieItem, (oldState, action) => {
+    return {
+      ...oldState,
+      selectedMovieItemId: action.selectedId
+    };
+  })
 
 
 );

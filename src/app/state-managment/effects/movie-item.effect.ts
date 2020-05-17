@@ -1,5 +1,9 @@
+import { MovieItem } from 'src/app/models/movie-item';
 import { createMovieGroupSuccess } from './../actions/movie-group.action';
+<<<<<<< HEAD
 import { MovieItemActionName, createMovieItemFailed, createMovieItemSuccess } from './../actions/movie-item.action';
+=======
+>>>>>>> Sina/ngrx-reducer
 import { HttpService as HttpService } from './../../service-layer/http-service.service';
 import { Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';  // ??????/ add nashode ke
@@ -49,5 +53,24 @@ this.actions$.pipe(
   )
 )
 );
+<<<<<<< HEAD
+=======
+///////////////////
+removeItem$ = createEffect(() =>
+this.actions$.pipe(
+  ofType(actions.removeItem),
+  mergeMap(action =>
+    this.httpService.removeMovieItem(action.selectedMovieItemId).pipe(
+      map(movieItems => {
+        return actions.removeItemSuccess({items: movieItems});
+      }),
+      catchError((error: Error) => {
+        return of(actions.removeItemFailed(error));
+      })
+    )
+  )
+)
+);
+>>>>>>> Sina/ngrx-reducer
 
 }
