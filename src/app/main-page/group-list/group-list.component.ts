@@ -16,7 +16,7 @@ export class GroupListComponent implements OnInit {
   public groupList: MovieGroup[];
   public readonly addButtonLabel = 'Add';
   public readonly removeButtonLabel = 'Rmv';
-  private selectedId: number;
+  public selectedId: number;
 
   // @Output()
   // groupSelectId: EventEmitter<number> = new EventEmitter();

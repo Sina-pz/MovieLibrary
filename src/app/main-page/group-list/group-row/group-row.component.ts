@@ -12,6 +12,7 @@ import { Store } from '@ngrx/store';
 })
 export class GroupRowComponent implements OnInit {
 
+  @Input() selected: boolean;
   @Input()
   group: MovieGroup;
   @Output()

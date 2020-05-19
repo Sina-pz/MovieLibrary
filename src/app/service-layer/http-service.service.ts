@@ -24,7 +24,7 @@ export class HttpService {
 
   public getMovieGroupList(): Observable<MovieGroup[]> {
     const db = new MockDB();
-    this.groupList = db.getMovieItemList();
+    this.groupList = db.getGroupList();
     return of<MovieGroup[]>(this.groupList);
     console.log('hi new groupList');
   }
