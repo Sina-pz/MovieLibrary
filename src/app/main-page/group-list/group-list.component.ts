@@ -45,6 +45,7 @@ export class GroupListComponent implements OnInit {
 
   onGroupSelect(id: number) {
     this.selectedId = id;
+    console.log('group row selectedId' + this.selectedId);
   }
 
   onRmvButtonClick() {
@@ -53,7 +54,7 @@ export class GroupListComponent implements OnInit {
     // (clickedButton)="onButtonSelect($event)"
     //  this.groupIdSelect = groupId;
     //  console.log('click on a group which is:' + groupId);
-    this.store.dispatch(actions.removeGroup({ selectedId: this.selectedId }));
+    this.store.dispatch(actions.removeGroup({ selectedId: this.selectedId, updatedGroupList: this.groupList }));
   }
 
 }

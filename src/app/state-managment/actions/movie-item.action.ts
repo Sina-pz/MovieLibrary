@@ -1,5 +1,6 @@
-import { MovieItem } from 'src/app/models/movie-item';
+import { MovieItem } from './../../models/movie-item';
 import { createAction, props } from '@ngrx/store';
+import { NumberSymbol } from '@angular/common';
 
 
 
@@ -40,7 +41,7 @@ export const selectMovieItem = createAction(MovieItemActionName.selectMovieItem,
     props<{ selectedId: number }>());
 
 export const removeItem = createAction(MovieItemActionName.Remove,
-    props<{ selectedMovieItemId: number }>());
+    props<{ selectedMovieItemId: number; filteredMovieItemList: MovieItem[] }>());
 export const removeItemSuccess = createAction(MovieItemActionName.RemoveSuccess,
     props<{ items: MovieItem[] }>());
 export const removeItemFailed = createAction(MovieItemActionName.RemoveFailed,

@@ -55,7 +55,7 @@ removeItem$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.removeItem),
   mergeMap(action =>
-    this.httpService.removeMovieItem(action.selectedMovieItemId).pipe(
+    this.httpService.removeMovieItem(action.selectedMovieItemId, action.filteredMovieItemList).pipe(
       map(movieItems => {
         return actions.removeItemSuccess({items: movieItems});
       }),

@@ -17,7 +17,6 @@ export enum MovieGroupActionName {
         RemoveFailed  = '[MovieGroup] Remove MovieGroup Failed',
 }
 
-
 export const loadGroupList = createAction(MovieGroupActionName.LoadGroupList);
 export const loadGroupListSuccess = createAction(MovieGroupActionName.LoadGroupListSuccess,
         props<{groups: MovieGroup[]}>());
@@ -35,9 +34,9 @@ export const selectGroupId = createAction(MovieGroupActionName.SelectGroupId,
         props<{selectedGroupId: number}>());
 
 export const removeGroup = createAction(MovieGroupActionName.Remove,
-        props<{ selectedId: number }>());
-export const removeSuccess = createAction(MovieGroupActionName.RemoveSuccess,
+        props<{ selectedId: number, updatedGroupList: MovieGroup[] }>());
+export const removeGroupSuccess = createAction(MovieGroupActionName.RemoveSuccess,
         props<{groups: MovieGroup[]}>());
-export const removeFailed = createAction(MovieGroupActionName.RemoveFailed,
+export const removeGroupFailed = createAction(MovieGroupActionName.RemoveFailed,
         props<{message: string}>());
 

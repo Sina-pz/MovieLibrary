@@ -31,7 +31,6 @@ export class GroupRowComponent implements OnInit {
          this.store.dispatch(selectGroupId({selectedGroupId: this.group.id}));
       // this.props.Store.dispatch(selectGroupId(this.group.id));
          this.idSelect.emit(this.group.id);
-         console.log('group row selectedId' + this.group.id);
     }
   }
 }

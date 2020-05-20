@@ -20,16 +20,16 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   on(actions.removeItemSuccess, (oldState, action) => {
     return {
       ...oldState,
-      movieItemList: action.items
+      filteredMovieItemList: action.items
     };
   }),
   on(actions.removeItemFailed),
   ///////////////////////////////////////////////////////////////////
-  on(actions.loadMovieItemList),   // in agar nabashe chi mishe ??
+  on(actions.loadMovieItemList),
   on(actions.loadMovieItemListSuccess, (oldState, action) => {
     return {
       ...oldState,
-      groupList: action.items
+      movieItemList: action.items
     };
   }),
   on(actions.loadMovieItemListFailed),

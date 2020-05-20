@@ -36,15 +36,15 @@ export class MovieGroupEffects {
         return of(actions.createMovieGroupFailed(error));
       })))));
   //////////
-  ///////////////////
   removeGroup$ = createEffect(() => this.actions$.pipe(
     ofType(actions.removeGroup),
-    mergeMap(action => this.httpService.removeGroup(action.selectedId).pipe(
+    mergeMap(action => this.httpService.removeGroup(action.selectedId, action.updatedGroupList).pipe(
       map(movieGroups => {
-        return actions.removeSuccess({ groups: movieGroups });
+        return actions.removeGroupSuccess({ groups: movieGroups });
       }), catchError((error: Error) => {
-        return of(actions.removeFailed(error));
+        return of(actions.removeGroupFailed(error));
       })))));
+   ///////////////////
   // filter movieItems on selectedGroupId
   selectGroup$ = createEffect(() => this.actions$.pipe(
     ofType(actions.selectGroupId),
