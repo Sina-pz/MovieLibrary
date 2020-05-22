@@ -1,8 +1,9 @@
 <div class="group-list-container" *ngIf="groupList">
     <!-- {{'access to variables: method A (within the body)' + groupNameList[0]}} -->
     <div class="group-row">
-        <app-group-row *ngFor="let group of groupList" [group]="group"
-         ></app-group-row>
+        <app-group-row *ngFor="let group of groupList" 
+        [group]="group" 
+        [selected]="selectedId === group.id"></app-group-row>
     </div>
 
     <div class="button-bar">

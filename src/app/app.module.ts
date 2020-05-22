@@ -23,6 +23,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { MovieItemEffects } from './state-managment/effects/movie-item.effect';
+import { RowItemDirective } from './row-item.directive';
 
 
 
@@ -36,6 +37,7 @@ import { MovieItemEffects } from './state-managment/effects/movie-item.effect';
     ThumbnailItemComponent,
     ItemDetailComponent,
     ButtonComponent,
+    RowItemDirective,
    ],
   imports: [
     BrowserModule,
