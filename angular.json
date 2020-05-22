@@ -123,6 +123,7 @@
   },
   "defaultProject": "my-app-sina",
   "cli": {
-    "analytics": "bd562731-c634-4232-935d-713b4d274b10"
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "462aadc7-2fd3-445a-85fe-4bfd69875af1"
   }
 }

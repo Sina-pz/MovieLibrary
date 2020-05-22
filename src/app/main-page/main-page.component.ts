@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MockDB } from '../models/mock-db';
-import { MovieGroup } from '../models/movie-group';
-import { MovieItem } from '../models/movie-item';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../state-managment/states';
-import { getGroupList } from '../state-managment/action';
+import { loadGroupList } from '../state-managment/actions/movie-group.action';
+import { loadMovieItemList } from '../state-managment/actions/movie-item.action';
+
 
 @Component({
   selector: 'app-main-page',
@@ -17,7 +16,8 @@ export class MainPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.store.dispatch(getGroupList());
+    this.store.dispatch(loadGroupList());
+    this.store.dispatch(loadMovieItemList());
   }
 
 }

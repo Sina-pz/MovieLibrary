@@ -1,13 +1,15 @@
 <div class="group-list-container" *ngIf="groupList">
     <!-- {{'access to variables: method A (within the body)' + groupNameList[0]}} -->
     <div class="group-row">
-        <app-group-row *ngFor="let group of groupList" [group]="group"></app-group-row>
+        <app-group-row *ngFor="let group of groupList" 
+        [group]="group" 
+        (idSelect)="onGroupSelect($event)"
+        [selected]="selectedId === group.id"></app-group-row>
     </div>
 
     <div class="button-bar">
 
-        <app-button [text]="addButtonLabel" (buttonClick)="onAddButtonClick()"></app-button>
-
+        <app-button [text]="addButtonLabel"    (buttonClick)="onAddButtonClick()"></app-button>
         <app-button [text]="removeButtonLabel" (buttonClick)="onRmvButtonClick()"></app-button>
 
     </div>

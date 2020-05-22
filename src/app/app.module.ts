@@ -1,3 +1,7 @@
+import { MovieGroupEffects } from './state-managment/effects/movie-group.effect';
+import { metaReducers, reducers } from './state-managment/reducers/index';
+
+
 import { _movieGroupReducer } from './state-managment/reducers/movie-group.reducer';
 import { _movieItemReducer } from './state-managment/reducers/movie-item.reducer';
 
@@ -15,10 +19,11 @@ import { ItemDetailComponent } from './main-page/item-detail/item-detail.compone
 
 import { ButtonComponent } from './main-page/button/button.component';
 import { StoreModule } from '@ngrx/store';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { MovieItemEffects } from './state-managment/effects/movie-item.effect';
+import { RowItemDirective } from './row-item.directive';
 
 
 
@@ -32,6 +37,7 @@ import { EffectsModule } from '@ngrx/effects';
     ThumbnailItemComponent,
     ItemDetailComponent,
     ButtonComponent,
+    RowItemDirective,
    ],
   imports: [
     BrowserModule,
@@ -39,9 +45,16 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot({
         movieItemState: _movieItemReducer,
         movieGroupState: _movieGroupReducer}),
-    StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([MovieItemEffects, MovieGroupEffects ]),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+      }
+    }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [MainPageComponent]

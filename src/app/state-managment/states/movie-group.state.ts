@@ -15,3 +15,4 @@ export const initialMovieGroupState: IMovieGroupState = {
 
 export const getGroupList = (state: IMovieGroupState) => state.groupList;
 export const getSelectedGroupId = (state: IMovieGroupState) => state.selectedGroupId;
+
