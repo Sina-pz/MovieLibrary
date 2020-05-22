@@ -18,15 +18,18 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,
     on(actions.createMovieGroupFailed),
       ///////////////////////////////////
     on(actions.removeGroup),
-    on(actions.removeGroupSuccess, (oldState, action) => {
-        return {
+    on(actions.removeGroupSuccess, oldState => {
+        const temporaryGroupList = oldState.groupList.map(group => group);
+        if (oldState.selectedGroupId) {
+            const newGroupList = temporaryGroupList.filter(group => group.id !== oldState.selectedGroupId);
+
+            return {
             ...oldState,
-            groupList: action.groups
-        };
-    }),
+            groupList: newGroupList };
+    }}),
     on(actions.removeGroupFailed),
         ///////////////////////////////////////////////////////////////////
-        on(actions.loadGroupList),  // in karb? unin ke mire effect //
+        on(actions.loadGroupList),
         on(actions.loadGroupListSuccess, (oldState, action) => {
             return {
                 ...oldState,

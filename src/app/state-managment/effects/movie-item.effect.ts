@@ -55,9 +55,9 @@ removeItem$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.removeItem),
   mergeMap(action =>
-    this.httpService.removeMovieItem(action.selectedMovieItemId, action.filteredMovieItemList).pipe(
-      map(movieItems => {
-        return actions.removeItemSuccess({items: movieItems});
+    this.httpService.removeMovieItem().pipe(
+      map(message => {
+        return actions.removeItemSuccess({successMessage: message});
       }),
       catchError((error: Error) => {
         return of(actions.removeItemFailed(error));

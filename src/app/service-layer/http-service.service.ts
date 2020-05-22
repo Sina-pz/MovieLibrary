@@ -41,28 +41,26 @@ export class HttpService {
     return of<MovieGroup>(randomGroup);
   }
 
-  public removeMovieItem(selectedMovieItemId: number, filteredMovieItemList: MovieItem[] ): Observable<MovieItem[]> {
-      for (let index = 0; index < filteredMovieItemList.length; index++) {
-        if (selectedMovieItemId === filteredMovieItemList[index].groupId) {
-          const newGroupList = filteredMovieItemList.map(group => group);
-          newGroupList.splice(index, 1);
-          return of<MovieItem[]>(newGroupList);
+  public removeMovieItem(): Observable<boolean> {
+      // for (let index = 0; index < filteredMovieItemList.length; index++) {
+      //   if (selectedMovieItemId === filteredMovieItemList[index].groupId) {
+      //     const newGroupList = filteredMovieItemList.map(group => group);
+      //     newGroupList.splice(index, 1);
+      const successMessage = true;
+      return of<boolean>(successMessage);
         }
-      }
-  }
 
-  public removeGroup(selectedGroupId: number, updatedGroupList: MovieGroup[]): Observable<MovieGroup[]> {
+  public removeGroup(): Observable<boolean> {
 
-    for (let index = 0; index < this.groupList.length; index++) {
-      if (selectedGroupId === updatedGroupList[index].id) {
-        // const newGroupList = groupList.map(group => group); read only property can not change
-        const newGroupList = updatedGroupList.map(group => group);
-        newGroupList.splice(index, 1);
-        return of<MovieGroup[]>(newGroupList);
+    // for (let index = 0; index < this.groupList.length; index++) {
+    //   if (selectedGroupId === updatedGroupList[index].id) {
+    //     // const newGroupList = groupList.map(group => group); read only property can not change
+    //     const newGroupList = updatedGroupList.map(group => group);
+    //     newGroupList.splice(index, 1);
+           const successMessage = true;
+           return of<boolean>(successMessage);
         //  this.groupList.filter( group =>  group.id !== selectedGroupId)
         //     return of<MovieGroup[]>();
       }
-    }
-  }
 
 }

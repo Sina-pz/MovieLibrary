@@ -39,17 +39,17 @@ export class MovieItemListComponent implements OnInit {
     this.store.dispatch(createMovieItem({item: new MovieItem()})); // user vared mikone
   }
 
-  onMoveItemSelect(id: number) {
-    this.selectedId = id;
-  }
+  // onMoveItemSelect(id: number) {
+  //   this.selectedId = id;
+  // }
 
   onRmvButtonClick() {
     // this.logic.removeMovieItem();
-    console.log('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
     //  this.groupIdSelect = groupId;
     //  console.log('click on a group which is:' + groupId); filterMovieItemList: this.movieItemList
-    this.store.dispatch(removeItem({ selectedMovieItemId: this.selectedId, filteredMovieItemList: this.movieItemList }));
+    // this.store.dispatch(removeItem({ selectedMovieItemId: this.selectedId, filteredMovieItemList: this.movieItemList }));
+    this.store.dispatch(removeItem());
   }
 
 

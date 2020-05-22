@@ -33,10 +33,10 @@ export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFa
 export const selectGroupId = createAction(MovieGroupActionName.SelectGroupId,
         props<{selectedGroupId: number}>());
 
-export const removeGroup = createAction(MovieGroupActionName.Remove,
-        props<{ selectedId: number, updatedGroupList: MovieGroup[] }>());
+export const removeGroup = createAction(MovieGroupActionName.Remove);
+        // props<{ selectedId: number }>());
 export const removeGroupSuccess = createAction(MovieGroupActionName.RemoveSuccess,
-        props<{groups: MovieGroup[]}>());
+        props<{successMessage: boolean}>());
 export const removeGroupFailed = createAction(MovieGroupActionName.RemoveFailed,
         props<{message: string}>());
 

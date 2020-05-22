@@ -40,9 +40,9 @@ export const filterMovieItemList = createAction(MovieItemActionName.FilterMovieI
 export const selectMovieItem = createAction(MovieItemActionName.selectMovieItem,
     props<{ selectedId: number }>());
 
-export const removeItem = createAction(MovieItemActionName.Remove,
-    props<{ selectedMovieItemId: number; filteredMovieItemList: MovieItem[] }>());
+export const removeItem = createAction(MovieItemActionName.Remove);
+    // props<{ selectedMovieItemId: number; filteredMovieItemList: MovieItem[] }>());
 export const removeItemSuccess = createAction(MovieItemActionName.RemoveSuccess,
-    props<{ items: MovieItem[] }>());
+    props<{ successMessage: boolean }>());
 export const removeItemFailed = createAction(MovieItemActionName.RemoveFailed,
     props<{ message: string }>());

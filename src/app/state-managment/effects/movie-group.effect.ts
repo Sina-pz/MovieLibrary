@@ -38,9 +38,10 @@ export class MovieGroupEffects {
   //////////
   removeGroup$ = createEffect(() => this.actions$.pipe(
     ofType(actions.removeGroup),
-    mergeMap(action => this.httpService.removeGroup(action.selectedId, action.updatedGroupList).pipe(
-      map(movieGroups => {
-        return actions.removeGroupSuccess({ groups: movieGroups });
+    // mergeMap(action => this.httpService.removeGroup(action.selectedId, action.updatedGroupList).pipe(
+       mergeMap(action => this.httpService.removeGroup().pipe(
+       map(message => {
+        return actions.removeGroupSuccess({ successMessage: message });
       }), catchError((error: Error) => {
         return of(actions.removeGroupFailed(error));
       })))));
