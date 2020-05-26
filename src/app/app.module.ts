@@ -1,6 +1,8 @@
 import { MovieGroupEffects } from './state-managment/effects/movie-group.effect';
 import { metaReducers, reducers } from './state-managment/reducers/index';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { _movieGroupReducer } from './state-managment/reducers/movie-group.reducer';
 import { _movieItemReducer } from './state-managment/reducers/movie-item.reducer';
@@ -24,6 +26,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { MovieItemEffects } from './state-managment/effects/movie-item.effect';
 import { RowItemDirective } from './row-item.directive';
+import { MovieGroupFormComponent } from './main-page/movie-group-form/movie-group-form.component';
 
 
 
@@ -38,10 +41,12 @@ import { RowItemDirective } from './row-item.directive';
     ItemDetailComponent,
     ButtonComponent,
     RowItemDirective,
+    MovieGroupFormComponent,
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({
         movieItemState: _movieItemReducer,
         movieGroupState: _movieGroupReducer}),
