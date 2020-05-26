@@ -43,9 +43,10 @@ export class GroupListComponent implements OnInit {
     // console.log('click on a group which is:' + groupId);
   }
 
-  onGroupSelect(id: number) {
-    this.selectedId = id;
-  }
+  // onGroupSelect(id: number) {    came from child through Emiter
+  //   this.selectedId = id;
+  //   console.log('group row selectedId' + this.selectedId);
+  // }
 
   onRmvButtonClick() {
     // this.logic.removeGroup();
@@ -53,7 +54,7 @@ export class GroupListComponent implements OnInit {
     // (clickedButton)="onButtonSelect($event)"
     //  this.groupIdSelect = groupId;
     //  console.log('click on a group which is:' + groupId);
-    this.store.dispatch(actions.removeGroup({ selectedId: this.selectedId }));
+    this.store.dispatch(actions.removeGroup());
   }
 
 }

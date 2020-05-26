@@ -1,5 +1,5 @@
 import { MovieItem } from './../../models/movie-item';
-import { createMovieItem, removeItem } from './../../state-managment/actions/movie-item.action';
+import { createMovieItem, removeItem, filterMovieItemList } from './../../state-managment/actions/movie-item.action';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, Input } from '@angular/core';
 import { LogicService } from 'src/app/service-layer/logic.service';
@@ -39,17 +39,17 @@ export class MovieItemListComponent implements OnInit {
     this.store.dispatch(createMovieItem({item: new MovieItem()})); // user vared mikone
   }
 
-  onMoveItemSelect(id: number) {
-    this.selectedId = id;
-  }
+  // onMoveItemSelect(id: number) {
+  //   this.selectedId = id;
+  // }
 
   onRmvButtonClick() {
     // this.logic.removeMovieItem();
-    console.log('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
     //  this.groupIdSelect = groupId;
-    //  console.log('click on a group which is:' + groupId);
-    this.store.dispatch(removeItem({ selectedMovieItemId: this.selectedId }));
+    //  console.log('click on a group which is:' + groupId); filterMovieItemList: this.movieItemList
+    // this.store.dispatch(removeItem({ selectedMovieItemId: this.selectedId, filteredMovieItemList: this.movieItemList }));
+    this.store.dispatch(removeItem());
   }
 
 

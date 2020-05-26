@@ -17,19 +17,22 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
   on(actions.createMovieItemFailed),
   ///////////////////////////////////
   on(actions.removeItem),
-  on(actions.removeItemSuccess, (oldState, action) => {
-    return {
-      ...oldState,
-      movieItemList: action.items
-    };
-  }),
+  on(actions.removeItemSuccess, oldState => {
+    const temporaryMovieItemList = oldState.filteredMovieItemList.map(group => group);
+    if (oldState.selectedMovieItemId) {
+      const newMovieItemList = temporaryMovieItemList.filter(group => group.id !== oldState.selectedMovieItemId);
+
+      return {
+        ...oldState,
+        filteredMovieItemList: newMovieItemList };
+  }}),
   on(actions.removeItemFailed),
   ///////////////////////////////////////////////////////////////////
-  on(actions.loadMovieItemList),   // in agar nabashe chi mishe ??
+  on(actions.loadMovieItemList),
   on(actions.loadMovieItemListSuccess, (oldState, action) => {
     return {
       ...oldState,
-      groupList: action.items
+      movieItemList: action.items
     };
   }),
   on(actions.loadMovieItemListFailed),
