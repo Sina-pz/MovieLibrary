@@ -35,7 +35,7 @@ export class GroupListComponent implements OnInit {
     this.groupList = list;
   }
 
-  onAddButtonClick(movieGroup: MovieGroup) {
+  onAddButtonClick() {
     console.log('hi addGroup click');
     this.addGroup.emit();
     // this.store.dispatch(actions.createMovieGroup({
