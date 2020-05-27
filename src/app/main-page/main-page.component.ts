@@ -24,4 +24,12 @@ export class MainPageComponent implements OnInit {
   public onAddGroup() {
     this.showGroupDialog = true;
   }
+
+  public onCancelGroup() {
+    this.showGroupDialog = false;
+  }
+
+  public onConfirmGroup() {
+    this.showGroupDialog = false;
+  }
 }

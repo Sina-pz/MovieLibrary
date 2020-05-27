@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-movie-group-form',
@@ -7,17 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieGroupFormComponent implements OnInit {
 
+  @Output() cancel = new EventEmitter<any>();
+  @Output() confirm = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
   public onCancelClick() {
-
+    this.cancel.emit();
   }
 
   public onConfirmClick() {
-
+    this.confirm.emit();
   }
 
 }

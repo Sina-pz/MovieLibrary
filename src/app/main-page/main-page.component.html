@@ -7,7 +7,11 @@
     </div>
 
     <div class="page-dialogs">
-        <app-movie-group-form class="dialog" *ngIf="showGroupDialog"></app-movie-group-form>
+        <app-movie-group-form class="dialog" *ngIf="showGroupDialog"
+        [group]=
+            (cancel)="onCancelGroup();" 
+            (confirm)="onConfirmGroup();"
+        ></app-movie-group-form>
 
     </div>
 </div>

@@ -4,6 +4,7 @@ import { MovieGroup } from 'src/app/models/movie-group';
 export interface IMovieGroupState {
     groupList: MovieGroup[];
     selectedGroupId: number;
+    selectedGroup: MovieGroup;
 }
 
 export const initialMovieGroupState: IMovieGroupState = {
