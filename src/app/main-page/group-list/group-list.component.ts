@@ -14,6 +14,7 @@ import * as actions from '../../state-managment/actions/movie-group.action';
 })
 export class GroupListComponent implements OnInit {
 
+  @Output() public addGroup = new EventEmitter<any>();
   public groupList: MovieGroup[];
   public readonly addButtonLabel = 'Add';
   public readonly removeButtonLabel = 'Rmv';
@@ -36,17 +37,10 @@ export class GroupListComponent implements OnInit {
 
   onAddButtonClick(movieGroup: MovieGroup) {
     console.log('hi addGroup click');
-    this.store.dispatch(actions.createMovieGroup({
-      group: movieGroup
-    }));
-    // (clickedButton)="onButtonSelect($event)"
-    // this.groupIdSelect = groupId;
-    // console.log('click on a group which is:' + groupId);
-  }
-
-  onGroupSelect(id: number) {   // came from child through Emiter
-    this.selectedId = id;
-    console.log('group row selectedId' + this.selectedId);
+    this.addGroup.emit();
+    // this.store.dispatch(actions.createMovieGroup({
+    //   group: new MovieGroup()
+    // }));
   }
 
   onRmvButtonClick() {

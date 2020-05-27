@@ -1,8 +1,13 @@
-
 <div class="main-page-container">
 
-    <app-group-list></app-group-list>
-    <app-movie-item-list></app-movie-item-list>
-    <app-item-detail></app-item-detail>
-   
+    <div class="page-content">
+        <app-group-list (addGroup)="onAddGroup();"></app-group-list>
+        <app-movie-item-list></app-movie-item-list>
+        <app-item-detail></app-item-detail>
+    </div>
+
+    <div class="page-dialogs">
+        <app-movie-group-form class="dialog" *ngIf="showGroupDialog"></app-movie-group-form>
+
+    </div>
 </div>

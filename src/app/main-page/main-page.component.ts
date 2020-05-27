@@ -12,6 +12,7 @@ import { loadMovieItemList } from '../state-managment/actions/movie-item.action'
 })
 export class MainPageComponent implements OnInit {
 
+  public showGroupDialog: boolean;
   constructor(private store: Store<IAppState>) {
    }
 
@@ -20,4 +21,7 @@ export class MainPageComponent implements OnInit {
     this.store.dispatch(loadMovieItemList());
   }
 
+  public onAddGroup() {
+    this.showGroupDialog = true;
+  }
 }
