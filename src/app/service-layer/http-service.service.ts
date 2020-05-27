@@ -38,7 +38,7 @@ export class HttpService {
   public creatGroup(group: MovieGroup): Observable<MovieGroup> {
     const db = new MockDB();
     const randomGroup = db.getRandomGroupList()[Math.floor(Math.random() * db.getRandomGroupList().length)];
-    return of<MovieGroup>(randomGroup);
+    return of<MovieGroup>(group);
   }
 
   public removeMovieItem(): Observable<boolean> {

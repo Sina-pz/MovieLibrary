@@ -18,15 +18,19 @@ export class RowItemDirective {
   // tslint:disable-next-line: variable-name
   private _selected: boolean;
 
-
-  // set style on mouseEnter
+     // set style on mouseEnter
   @HostListener('mouseenter') onMouseEnter() {
     // set item hover class
+    if (this.el && this.el.nativeElement) {
+    this.renderer.addClass(this.el.nativeElement, 'hoverClass');
+    }
   }
-
-  // set style on mouseLeave
+    // set style on mouseLeave
   @HostListener('mouseleave') onMouseLeave() {
     // remove item hover class
+    if (this.el && this.el.nativeElement) {
+    this.renderer.removeClass(this.el.nativeElement, 'hoverClass');
+    }
   }
 
   private setSelectedStyle(selected: boolean) {
@@ -38,5 +42,6 @@ export class RowItemDirective {
     }
     }
   }
+
 
 }

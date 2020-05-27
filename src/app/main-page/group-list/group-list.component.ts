@@ -1,5 +1,6 @@
+import { MovieGroup } from './../../models/movie-group';
+
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { MovieGroup } from 'src/app/models/movie-group';
 import { IAppState } from 'src/app/state-managment/states';
 import { Store } from '@ngrx/store';
 import * as selectors from '../../state-managment/states';
@@ -33,20 +34,20 @@ export class GroupListComponent implements OnInit {
     this.groupList = list;
   }
 
-  onAddButtonClick() {
+  onAddButtonClick(movieGroup: MovieGroup) {
     console.log('hi addGroup click');
     this.store.dispatch(actions.createMovieGroup({
-      group: new MovieGroup()
+      group: movieGroup
     }));
     // (clickedButton)="onButtonSelect($event)"
     // this.groupIdSelect = groupId;
     // console.log('click on a group which is:' + groupId);
   }
 
-  // onGroupSelect(id: number) {    came from child through Emiter
-  //   this.selectedId = id;
-  //   console.log('group row selectedId' + this.selectedId);
-  // }
+  onGroupSelect(id: number) {   // came from child through Emiter
+    this.selectedId = id;
+    console.log('group row selectedId' + this.selectedId);
+  }
 
   onRmvButtonClick() {
     // this.logic.removeGroup();

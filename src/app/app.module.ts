@@ -1,13 +1,11 @@
 import { MovieGroupEffects } from './state-managment/effects/movie-group.effect';
 import { metaReducers, reducers } from './state-managment/reducers/index';
 
-
 import { _movieGroupReducer } from './state-managment/reducers/movie-group.reducer';
 import { _movieItemReducer } from './state-managment/reducers/movie-item.reducer';
 
-
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -24,6 +22,26 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { MovieItemEffects } from './state-managment/effects/movie-item.effect';
 import { RowItemDirective } from './row-item.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogButtonComponent } from './main-page/dialog-button/dialog-button.component';
+import { DialogButtonDialogComponent } from './main-page/dialog-button/dialog-button.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field'; //
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';   // input
+import { MatInputModule } from '@angular/material/input';
+
+
+// @NgModule({
+//   exports: [
+//     MatFormFieldModule,
+//      ],
+//   declarations: [
+//     DialogButtonComponent,
+//     DialogButtonDialogComponent
+//   ],
+// })
+// export class MaterialModule {}
+
 
 
 
@@ -38,9 +56,26 @@ import { RowItemDirective } from './row-item.directive';
     ItemDetailComponent,
     ButtonComponent,
     RowItemDirective,
+    DialogButtonComponent,
+    DialogButtonDialogComponent,
+  //  MatFormFieldModule,  // in mohem nist
+    MatDialogModule
    ],
+     exports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+     ],
+     schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
+    ],
   imports: [
     BrowserModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule, // 4 ta erro hazv   <mat-form-field>
+    FormsModule, // added for [(ngModel)]
     AppRoutingModule,
     StoreModule.forRoot({
         movieItemState: _movieItemReducer,
@@ -54,7 +89,8 @@ import { RowItemDirective } from './row-item.directive';
         strictActionImmutability: true,
       }
     }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [MainPageComponent]
