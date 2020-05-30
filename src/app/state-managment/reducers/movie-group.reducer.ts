@@ -44,8 +44,15 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,
             selectedGroupId: action.selectedGroupId
         };
     }),
+        ///////////////////////////////////////////////////////////////////
+    on(actions.selectGroup, (oldState, action) => {
+        return {
+            ...oldState,
+            selectedGroup: action.selectedGroup
+        };
+    })
+
     );
-    //////////////////
 
 export function movieGroupReducer(oldState, action) {
     return _movieGroupReducer(oldState, action);

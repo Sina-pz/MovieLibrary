@@ -12,6 +12,7 @@ export enum MovieGroupActionName {
         CreateSuccess = '[MovieGroup] Create MovieGroup Success',
         CreateFailed  = '[MovieGroup] Create MovieGroup Failed',
         SelectGroupId = '[MovieGroup] Select GroupId',
+        SelectGroup   = '[MovieGroup] Select Group',
         Remove        = '[MovieGroup] Remove MovieGroup',
         RemoveSuccess = '[MovieGroup] Remove MovieGroup Success',
         RemoveFailed  = '[MovieGroup] Remove MovieGroup Failed',
@@ -32,6 +33,8 @@ export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFa
 
 export const selectGroupId = createAction(MovieGroupActionName.SelectGroupId,
         props<{selectedGroupId: number}>());
+export const selectGroup = createAction(MovieGroupActionName.SelectGroupId,
+                props<{selectedGroup: MovieGroup}>());
 
 export const removeGroup = createAction(MovieGroupActionName.Remove);
         // props<{ selectedId: number }>());

@@ -1,4 +1,4 @@
-import { selectGroupId } from './../../../state-managment/actions/movie-group.action';
+import { selectGroupId, selectGroup } from './../../../state-managment/actions/movie-group.action';
 import { LogicService } from './../../../service-layer/logic.service';
 import { MovieGroup } from './../../../models/movie-group';
 import { IAppState } from './../../../state-managment/states/index';
@@ -30,6 +30,7 @@ export class GroupRowComponent implements OnInit {
       // this.logic.updateFilteredItemsByGroupId(this.group.id); //props<{groupId: number}>()); // method
       // this.store.dispatch(selectGroupId(props:{this.group.id}));  (props: P & NotAllowedCheck<P>)
          this.store.dispatch(selectGroupId({selectedGroupId: this.group.id}));
+         this.store.dispatch(selectGroup({selectedGroup: this.group}));
          console.log('hi selectedGroupId click' + this.group.id );
          // this.props.Store.dispatch(selectGroupId(this.group.id));
          this.idSelect.emit(this.group.id);

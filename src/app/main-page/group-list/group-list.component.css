@@ -16,9 +16,10 @@
 }
 
 .group-list-container .button-bar {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-gap: 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
     border: 1px solid black;     
         
 }

@@ -1,16 +1,15 @@
 <div class="main-page-container">
 
     <div class="page-content">
-        <app-group-list (addGroup)="onAddGroup();"></app-group-list>
+        <app-group-list (addGroup)="onAddGroup();" (editGroup)="onEditGroup();"></app-group-list>
         <app-movie-item-list></app-movie-item-list>
         <app-item-detail></app-item-detail>
     </div>
 
     <div class="page-dialogs">
         <app-movie-group-form class="dialog" *ngIf="showGroupDialog"
-        [group]=
-            (cancel)="onCancelGroup();" 
-            (confirm)="onConfirmGroup();"
+        [selectedGroup] = "selectedGroup"            
+        (cancel)="onCancelGroup();"  (confirm)="onConfirmGroup();"
         ></app-movie-group-form>
 
     </div>

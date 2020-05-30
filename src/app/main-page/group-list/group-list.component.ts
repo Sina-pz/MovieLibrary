@@ -15,9 +15,11 @@ import * as actions from '../../state-managment/actions/movie-group.action';
 export class GroupListComponent implements OnInit {
 
   @Output() public addGroup = new EventEmitter<any>();
+  @Output() public editGroup = new EventEmitter<any>();
   public groupList: MovieGroup[];
   public readonly addButtonLabel = 'Add';
   public readonly removeButtonLabel = 'Rmv';
+  public readonly editButtonLabel = 'Edit';
   public selectedId: number;
 
   // @Output()
@@ -42,6 +44,7 @@ export class GroupListComponent implements OnInit {
     //   group: new MovieGroup()
     // }));
   }
+  
 
   onRmvButtonClick() {
     // this.logic.removeGroup();
@@ -50,6 +53,11 @@ export class GroupListComponent implements OnInit {
     //  this.groupIdSelect = groupId;
     //  console.log('click on a group which is:' + groupId);
     this.store.dispatch(actions.removeGroup());
+  }
+
+  onEditButtonClick() {
+    this.editGroup.emit();
+
   }
 
 }

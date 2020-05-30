@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MovieGroup } from 'src/app/models/movie-group';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-movie-group-form',
@@ -9,6 +10,7 @@ export class MovieGroupFormComponent implements OnInit {
 
   @Output() cancel = new EventEmitter<any>();
   @Output() confirm = new EventEmitter<any>();
+  @Input() selectedGroup: MovieGroup;
   constructor() { }
 
   ngOnInit(): void {
