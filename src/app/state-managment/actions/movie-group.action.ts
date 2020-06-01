@@ -16,6 +16,9 @@ export enum MovieGroupActionName {
         Remove        = '[MovieGroup] Remove MovieGroup',
         RemoveSuccess = '[MovieGroup] Remove MovieGroup Success',
         RemoveFailed  = '[MovieGroup] Remove MovieGroup Failed',
+        Edit          = '[MovieGroup] Edit MovieGroup',
+        EditSuccess   = '[MovieGroup] Edit MovieGroup Success',
+        EditFailed    = '[MovieGroup] Edit MovieGroup Failed',
 }
 
 export const loadGroupList = createAction(MovieGroupActionName.LoadGroupList);
@@ -33,13 +36,20 @@ export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFa
 
 export const selectGroupId = createAction(MovieGroupActionName.SelectGroupId,
         props<{selectedGroupId: number}>());
-export const selectGroup = createAction(MovieGroupActionName.SelectGroupId,
+export const selectGroup = createAction(MovieGroupActionName.SelectGroup,
                 props<{selectedGroup: MovieGroup}>());
 
 export const removeGroup = createAction(MovieGroupActionName.Remove);
         // props<{ selectedId: number }>());
 export const removeGroupSuccess = createAction(MovieGroupActionName.RemoveSuccess,
-        props<{successMessage: boolean}>());
+        props<{ successMessage: boolean }>());
 export const removeGroupFailed = createAction(MovieGroupActionName.RemoveFailed,
-        props<{message: string}>());
+        props<{ message: string }>());
+
+export const editMovieGroup = createAction(MovieGroupActionName.Edit,
+        props<{ group: MovieGroup }>());
+export const editMovieGroupSuccess = createAction(MovieGroupActionName.EditSuccess,
+        props<{ successMessage: boolean }>());
+export const editMovieGroupFailed = createAction(MovieGroupActionName.EditFailed,
+        props<{ message: string }>());
 

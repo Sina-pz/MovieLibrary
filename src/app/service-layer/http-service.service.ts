@@ -41,6 +41,12 @@ export class HttpService {
     return of<MovieGroup>(group);
   }
 
+  public editGroup(group: MovieGroup): Observable<boolean> {
+    const successMessage = true;
+    return of<boolean>(successMessage);
+  }
+
+
   public removeMovieItem(): Observable<boolean> {
       // for (let index = 0; index < filteredMovieItemList.length; index++) {
       //   if (selectedMovieItemId === filteredMovieItemList[index].groupId) {

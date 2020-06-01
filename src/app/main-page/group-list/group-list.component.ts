@@ -27,6 +27,7 @@ export class GroupListComponent implements OnInit {
 
   constructor(private store: Store<IAppState>) {
   // logic.groupListSubject.asObservable().subscribe(list => this.fromGroupList(list));
+
   }
 
   ngOnInit(): void {
@@ -44,7 +45,6 @@ export class GroupListComponent implements OnInit {
     //   group: new MovieGroup()
     // }));
   }
-  
 
   onRmvButtonClick() {
     // this.logic.removeGroup();

@@ -7,10 +7,10 @@
     </div>
 
     <div class="page-dialogs">
-        <app-movie-group-form class="dialog" *ngIf="showGroupDialog"
-        [selectedGroup] = "selectedGroup"            
-        (cancel)="onCancelGroup();"  (confirm)="onConfirmGroup();"
-        ></app-movie-group-form>
-
+        <app-movie-group-form class="dialog" *ngIf="showGroupDialog" [selectedGroup]="selectedGroup"
+         [ClickedEditButton]= "ClickedEditButton" [ClickedAddButton]= "ClickedAddButton"
+            (cancel)="onCancelGroup();" (confirm)="onConfirmGroup();"></app-movie-group-form>
     </div>
 </div>
+
+<!-- chejoori 2 ta ngIf bezarim baraye selectedGroup(2 vomin if)    -->

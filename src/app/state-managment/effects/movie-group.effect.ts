@@ -50,4 +50,18 @@ export class MovieGroupEffects {
   selectGroup$ = createEffect(() => this.actions$.pipe(
     ofType(actions.selectGroupId),
     map(action => movieItemActions.filterMovieItemList({ selectedGroupId: action.selectedGroupId }))));
+  //////////////////
+  editGroup$ = createEffect(() => this.actions$.pipe(
+    ofType(actions.editMovieGroup),
+    mergeMap(action => this.httpService.editGroup(action.group).pipe(
+      map(message => {
+        return actions.editMovieGroupSuccess({ successMessage: message });
+      }), catchError((error: Error) => {
+        return of(actions.editMovieGroupFailed(error));
+      })))));
+  //////////
+
+
+
+
 }

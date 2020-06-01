@@ -12,11 +12,9 @@ import { Store } from '@ngrx/store';
 })
 export class GroupRowComponent implements OnInit {
 
-  @Input() selected: boolean;
-  @Input()
-  group: MovieGroup;
-  @Output()
-  idSelect: EventEmitter<number> = new EventEmitter();
+  @Input()  selected: boolean;
+  @Input()  group: MovieGroup;
+  @Output() idSelect: EventEmitter<number> = new EventEmitter();
 
   constructor(private logic: LogicService, private store: Store<IAppState>) {
    }

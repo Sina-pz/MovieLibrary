@@ -1,5 +1,9 @@
-import { MovieGroup } from 'src/app/models/movie-group';
+import { IAppState } from '../../state-managment/states';
+import { MovieGroup } from './../../models/movie-group';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as selectors from '../../state-managment/states';
 
 @Component({
   selector: 'app-movie-group-form',
@@ -8,10 +12,20 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class MovieGroupFormComponent implements OnInit {
 
-  @Output() cancel = new EventEmitter<any>();
+  constructor(private store: Store<IAppState>) {
+   }
+
+  @Output() cancel  = new EventEmitter<any>();
   @Output() confirm = new EventEmitter<any>();
-  @Input() selectedGroup: MovieGroup;
-  constructor() { }
+
+  @Input()  selectedGroup: MovieGroup;  // chera nemishe ba debug track kard! mage change detective nist
+  @Input() ClickedEditButton: boolean;
+  @Input() ClickedAddButton: boolean;
+
+  selectedGroupForm = new FormGroup({
+    name: new FormControl(''),
+    id: new FormControl(''),
+  });
 
   ngOnInit(): void {
   }
