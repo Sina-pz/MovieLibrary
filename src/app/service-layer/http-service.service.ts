@@ -43,7 +43,9 @@ export class HttpService {
 
   public editGroup(group: MovieGroup): Observable<boolean> {
     const successMessage = true;
-    return of<boolean>(successMessage);
+    // call backend for update a group
+    // take the answer : (updatedGroup) || boolean
+    return of<boolean>(true);
   }
 
 

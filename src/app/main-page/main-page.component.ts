@@ -5,6 +5,7 @@ import { IAppState } from '../state-managment/states';
 import * as selectors from '../state-managment/states';
 import { loadGroupList, editMovieGroup } from '../state-managment/actions/movie-group.action';
 import { loadMovieItemList } from '../state-managment/actions/movie-item.action';
+import * as actions from '../state-managment/actions/movie-group.action';
 
 
 
@@ -26,9 +27,11 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadGroupList());
     this.store.dispatch(loadMovieItemList());
+    this.store.select(selectors.selectSelectedGroup).subscribe(list => this.fromGroupRow(list));
   }
 
   public onAddGroup() {
+    this.store.dispatch(actions.selectGroup({selectedGroup: undefined}));
     this.showGroupDialog = true;
     this.ClickedAddButton = true;
     this.ClickedEditButton = false;
@@ -36,13 +39,13 @@ export class MainPageComponent implements OnInit {
   }
 
   onEditGroup()  {
-    this.store.select(selectors.selectSelectedGroup).subscribe(list => this.fromGroupRow(list));
     if (this.selectedGroup) {this.showGroupDialog = true; }
     this.ClickedEditButton = true;
     this.ClickedAddButton = false;
   }
 
   public fromGroupRow(group: MovieGroup) {
+    console.log('repeat');
     this.selectedGroup = group;
   }
 
