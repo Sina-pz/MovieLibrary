@@ -50,7 +50,17 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,
             ...oldState,
             selectedGroup: action.selectedGroup
         };
-    })
+    }),
+    /////////////////////////
+    on(actions.editMovieGroupSuccess, (oldState, action) => {
+        const temporaryGroupList = oldState.groupList.map(group => group);
+        const newGroupList  = temporaryGroupList.filter(group => group.id !== oldState.selectedGroup.id );
+        newGroupList.push(action.group);
+        return {
+            ...oldState,
+            groupList: newGroupList  };
+        }),
+    on(actions.createMovieGroupFailed)
 
     );
 

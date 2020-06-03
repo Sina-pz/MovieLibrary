@@ -8,7 +8,6 @@
 
     <div class="page-dialogs">
         <app-movie-group-form class="dialog" *ngIf="showGroupDialog" [selectedGroup]="selectedGroup"
-         [ClickedEditButton]= "ClickedEditButton" [ClickedAddButton]= "ClickedAddButton"
             (cancel)="onCancelGroup();" (confirm)="onConfirmGroup();"></app-movie-group-form>
     </div>
 </div>

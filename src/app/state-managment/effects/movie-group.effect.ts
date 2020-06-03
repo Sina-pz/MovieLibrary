@@ -54,8 +54,8 @@ export class MovieGroupEffects {
   editGroup$ = createEffect(() => this.actions$.pipe(
     ofType(actions.editMovieGroup),
     mergeMap(action => this.httpService.editGroup(action.group).pipe(
-      map(message => {
-        return actions.editMovieGroupSuccess({ successMessage: message });
+      map(newGroup => {
+        return actions.editMovieGroupSuccess({ group: newGroup });
       }), catchError((error: Error) => {
         return of(actions.editMovieGroupFailed(error));
       })))));

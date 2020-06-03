@@ -9,23 +9,14 @@
         </div>
     </div>
 <!---->
-  <!--<form [formGroup]="selectedGroupForm">-->
+  <form [formGroup]="selectedGroupFormGroup">
     <div class="movie-group-body">
         <div class="row">
             <div class="row-field-label">
                  Name
             </div>
             <div class="row-field-value">
-           <!-- <input type="text" formControlName="name"> --> 
-           
-                <div *ngIf="ClickedEditButton; else ClickedAddButton">
-                    <input type="text" id="selectedGroup.name" name="selectedGroup.name" value="{{selectedGroup.name}}">
-                </div>
-                
-                <ng-template #ClickedAddButton>
-                    <input type="text" id="selectedGroup.name" name="selectedGroup.name" value="">
-                </ng-template>
-
+            <input type="text" formControlName="name"> 
             </div>
         </div>
         <div class="row">
@@ -33,18 +24,11 @@
                 Id
             </div>
             <div class="row-field-value">
-           <!-- <input type="text" formControlName="id" > --> 
-                <div *ngIf="ClickedEditButton; else ClickedAddButton">
-                    <input type="text" id="selectedGroup.name" name="selectedGroup.name" value="{{selectedGroup.id}}">
-                </div>
-                
-                <ng-template #ClickedAddButton>
-                    <input type="text" id="selectedGroup.name" name="selectedGroup.name" value="">
-                </ng-template>
+            <input type="text" formControlName="id">
             </div>
         </div>
     </div>
- <!-- </form> -->
+  </form>
 
     <div class="movie-group-footer">
         <app-button class="button" [text]="'Cancel'" (buttonClick)="onCancelClick()"></app-button>

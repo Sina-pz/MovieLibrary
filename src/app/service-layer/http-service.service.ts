@@ -36,14 +36,16 @@ export class HttpService {
   }
 
   public creatGroup(group: MovieGroup): Observable<MovieGroup> {
-    const db = new MockDB();
-    const randomGroup = db.getRandomGroupList()[Math.floor(Math.random() * db.getRandomGroupList().length)];
+    // const db = new MockDB();
+    // const randomGroup = db.getRandomGroupList()[Math.floor(Math.random() * db.getRandomGroupList().length)];
     return of<MovieGroup>(group);
   }
 
-  public editGroup(group: MovieGroup): Observable<boolean> {
-    const successMessage = true;
-    return of<boolean>(successMessage);
+  public editGroup(group: MovieGroup): Observable<MovieGroup> {
+    // const successMessage = true;
+    // call backend for updating the group
+    // take the answer : (updatedGroup) || (boolean)
+    return of<MovieGroup>(group);
   }
 
 

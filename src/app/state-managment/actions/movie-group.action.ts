@@ -49,7 +49,7 @@ export const removeGroupFailed = createAction(MovieGroupActionName.RemoveFailed,
 export const editMovieGroup = createAction(MovieGroupActionName.Edit,
         props<{ group: MovieGroup }>());
 export const editMovieGroupSuccess = createAction(MovieGroupActionName.EditSuccess,
-        props<{ successMessage: boolean }>());
+        props<{ group: MovieGroup }>());
 export const editMovieGroupFailed = createAction(MovieGroupActionName.EditFailed,
         props<{ message: string }>());
 
