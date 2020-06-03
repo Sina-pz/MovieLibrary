@@ -1,4 +1,3 @@
-
 <div class="movie-group-container">
     <div class="movie-group-header">
         <div class="group-header-label">
@@ -8,27 +7,27 @@
 
         </div>
     </div>
-<!---->
-  <form [formGroup]="selectedGroupFormGroup">
-    <div class="movie-group-body">
-        <div class="row">
-            <div class="row-field-label">
-                 Name
+    <form [formGroup]="selectedGroupFormGroup">
+        <div class="movie-group-body">
+            <div class="row">
+                <div class="row-field-label">
+                    Name
+                </div>
+                <div class="row-field-value">
+                    <input type="text" formControlName="name">
+                </div>
             </div>
-            <div class="row-field-value">
-            <input type="text" formControlName="name"> 
+            <div class="row">
+                <div class="row-field-label">
+                    Id
+                </div>
+                <div class="row-field-value">
+                    <input type="text" formControlName="id">
+
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="row-field-label">
-                Id
-            </div>
-            <div class="row-field-value">
-            <input type="text" formControlName="id">
-            </div>
-        </div>
-    </div>
-  </form>
+    </form>
 
     <div class="movie-group-footer">
         <app-button class="button" [text]="'Cancel'" (buttonClick)="onCancelClick()"></app-button>
