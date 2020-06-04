@@ -6,7 +6,7 @@ import * as selectors from '../state-managment/states';
 import * as actions from '../state-managment/actions/movie-group.action';
 import { loadGroupList, editMovieGroup } from '../state-managment/actions/movie-group.action';
 import { loadMovieItemList } from '../state-managment/actions/movie-item.action';
-import * as actions from '../state-managment/actions/movie-group.action';
+
 
 
 

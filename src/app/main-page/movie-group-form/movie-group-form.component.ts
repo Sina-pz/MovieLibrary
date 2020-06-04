@@ -13,7 +13,7 @@ import * as actions from '../../state-managment/actions/movie-group.action';
   styleUrls: ['./movie-group-form.component.css'],
 })
 export class MovieGroupFormComponent implements OnInit {
-  
+
   @Output() cancel = new EventEmitter<any>();
   @Output() confirm = new EventEmitter<any>();
 
@@ -35,11 +35,9 @@ export class MovieGroupFormComponent implements OnInit {
   constructor(private store: Store<IAppState>) {}
 
   ngOnInit(): void {
-    this.selectedGroupFormGroup.valueChanges.subscribe((formValues) =>
-      console.log(formValues)
+    this.selectedGroupFormGroup.valueChanges.subscribe((formValues) => console.log(formValues)
     );
   }
-
 
   public onCancelClick() {
     this.cancel.emit();

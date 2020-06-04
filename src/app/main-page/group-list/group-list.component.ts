@@ -1,5 +1,4 @@
 import { MovieGroup } from './../../models/movie-group';
-
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { IAppState } from 'src/app/state-managment/states';
 import { Store } from '@ngrx/store';

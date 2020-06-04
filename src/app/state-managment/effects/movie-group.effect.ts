@@ -59,7 +59,7 @@ export class MovieGroupEffects {
       }), catchError((error: Error) => {
         return of(actions.editMovieGroupFailed(error));
       })))));
-  //////////
+  //////////////////
 
 
 

@@ -1,16 +1,18 @@
+import { MovieGroup } from './../../models/movie-group';
 import { removeItemSuccess } from './../actions/movie-item.action';
 import { selectSelectedGroupId } from './../states/index';
 import * as actions from './../actions/movie-group.action';
 import { initialMovieGroupState } from './../states/movie-group.state';
 import { createReducer, on } from '@ngrx/store';
 
-
 // tslint:disable-next-line: variable-name
 export const _movieGroupReducer = createReducer(initialMovieGroupState,
     on(actions.createMovieGroup, oldState => oldState),
     on(actions.createMovieGroupSuccess, (oldState, action) => {
         const newGroupList = oldState.groupList.map(group => group);
-        newGroupList.push(action.group);
+        const lastGroup = newGroupList.slice(-1)[0];
+        const newGroup = { id: lastGroup.id + 1 , name: action.group.name} as MovieGroup;
+        newGroupList.push(newGroup);
         return {
             ...oldState,
             groupList: newGroupList  };
@@ -55,7 +57,8 @@ export const _movieGroupReducer = createReducer(initialMovieGroupState,
     on(actions.editMovieGroupSuccess, (oldState, action) => {
         const temporaryGroupList = oldState.groupList.map(group => group);
         const newGroupList  = temporaryGroupList.filter(group => group.id !== oldState.selectedGroup.id );
-        newGroupList.push(action.group);
+        const editedGroup = { id: oldState.selectedGroup.id , name: action.group.name} as MovieGroup;
+        newGroupList.push(editedGroup);
         return {
             ...oldState,
             groupList: newGroupList  };
