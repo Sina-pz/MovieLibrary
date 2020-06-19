@@ -4,22 +4,36 @@
     flex-direction: column;
     justify-content: space-between;
     grid-gap: 2px;
-    background-color: rgb(217, 225, 250);
+    background-color: white;
     padding: 1px;
-    border: 1px solid black;
+   /* border: 1px solid black; */
  
 }
-.group-row {
 
-    height: calc(100vh - 45px);
-    overflow: auto;
+.group-list-img {
+
+padding-left: 20px;
+padding-top: 10px;
+margin-bottom: 12px;
+
+
 }
 
-.group-list-container .button-bar {
+.group-row {
+  padding-top: 6px;
+
+    height: calc(100vh - 160px);
+    overflow: auto;
+    
+
+}
+
+.group-list-container
+ .button-bar {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    
-    border: 1px solid black;     
-        
+    justify-content: center;  
+    padding-top: 8px;
+    border-top: 1px solid #afafaf21 ;
+  /*  border: 1px solid black;  */      
 }

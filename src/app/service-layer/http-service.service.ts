@@ -30,9 +30,10 @@ export class HttpService {
     // console.log('hi new groupList');
   }
 
-  public creatMovieItem(item: MovieItem): Observable<MovieItem> {
-    const db = new MockDB();
-    return of<MovieItem>(db.getRandomMovieItemList()[Math.floor(Math.random() * db.getRandomMovieItemList().length)]);
+  public creatMovieItem(item: MovieItem, selectedGroupId: number) {
+    // const db = new MockDB();
+    // db.getRandomMovieItemList()[Math.floor(Math.random() * db.getRandomMovieItemList().length)]
+  return of({ item: item , selectedId: selectedGroupId});
   }
 
   public creatGroup(group: MovieGroup): Observable<MovieGroup> {
@@ -46,6 +47,13 @@ export class HttpService {
     // call backend for updating the group
     // take the answer : (updatedGroup) || (boolean)
     return of<MovieGroup>(group);
+  }
+
+  public editMovieItem(item: MovieItem): Observable<MovieItem> {
+    // const successMessage = true;
+    // call backend for updating the group
+    // take the answer : (updatedGroup) || (boolean)
+    return of<MovieItem>(item);
   }
 
 

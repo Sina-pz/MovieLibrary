@@ -16,9 +16,9 @@ export class GroupListComponent implements OnInit {
   @Output() public addGroup = new EventEmitter<any>();
   @Output() public editGroup = new EventEmitter<any>();
   public groupList: MovieGroup[];
-  public readonly addButtonLabel = 'Add';
-  public readonly removeButtonLabel = 'Rmv';
-  public readonly editButtonLabel = 'Edit';
+  public readonly addButtonLabel = 'plus_one';
+  public readonly removeButtonLabel = 'delete';
+  public readonly editButtonLabel = 'edit';
   public selectedId: number;
 
   // @Output()
@@ -26,7 +26,6 @@ export class GroupListComponent implements OnInit {
 
   constructor(private store: Store<IAppState>) {
   // logic.groupListSubject.asObservable().subscribe(list => this.fromGroupList(list));
-
   }
 
   ngOnInit(): void {
@@ -38,25 +37,31 @@ export class GroupListComponent implements OnInit {
   }
 
   onAddButtonClick() {
-    console.log('hi addGroup click');
     this.addGroup.emit();
+
     // this.store.dispatch(actions.createMovieGroup({
     //   group: new MovieGroup()
     // }));
+
   }
 
   onRmvButtonClick() {
+
     // this.logic.removeGroup();
     console.log('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
     //  this.groupIdSelect = groupId;
     //  console.log('click on a group which is:' + groupId);
     this.store.dispatch(actions.removeGroup());
+
   }
 
   onEditButtonClick() {
     this.editGroup.emit();
-
   }
+
+ public onGroupSelect(id: number) {
+   this.selectedId = id;
+ }
 
 }

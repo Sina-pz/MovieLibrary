@@ -1,5 +1,5 @@
 import { MovieGroup } from './../../models/movie-group';
-import { removeItemSuccess } from './../actions/movie-item.action';
+import { removeItemSuccess, filterMovieItemList } from './../actions/movie-item.action';
 import { selectSelectedGroupId } from './../states/index';
 import * as actions from './../actions/movie-group.action';
 import { initialMovieGroupState } from './../states/movie-group.state';

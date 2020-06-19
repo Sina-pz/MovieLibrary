@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {A11yModule} from '@angular/cdk/a11y';
 import { MovieGroupEffects } from './state-managment/effects/movie-group.effect';
 import { metaReducers, reducers } from './state-managment/reducers/index';
 
@@ -17,6 +17,7 @@ import { GroupListComponent } from './main-page/group-list/group-list.component'
 import { GroupRowComponent } from './main-page/group-list/group-row/group-row.component';
 import { MovieItemListComponent } from './main-page/movie-item-list/movie-item-list.component';
 import { ThumbnailItemComponent } from './main-page/movie-item-list/thumbnail-item/thumbnail-item.component';
+import { DialogContentComponent } from './main-page/movie-item-list/thumbnail-item/thumbnail-item.component';
 import { ItemDetailComponent } from './main-page/item-detail/item-detail.component';
 
 import { ButtonComponent } from './main-page/button/button.component';
@@ -28,8 +29,19 @@ import { MovieItemEffects } from './state-managment/effects/movie-item.effect';
 import { RowItemDirective } from './row-item.directive';
 import { MovieGroupFormComponent } from './main-page/movie-group-form/movie-group-form.component';
 import { NgModule } from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatBadgeModule} from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
+import { MaterialElevationDirective } from './material-elevation.directive';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
 
 
+// import {DemoMaterialModule} from './material-module';
 
 @NgModule({
   declarations: [
@@ -42,11 +54,33 @@ import { NgModule } from '@angular/core';
     ItemDetailComponent,
     ButtonComponent,
     RowItemDirective,
-    MovieGroupFormComponent
-   ],
-  imports: [
+    MovieGroupFormComponent,
+    DialogContentComponent,
+    MaterialElevationDirective
+       ],
+    exports: [
+     // MatIconModule
+     MatButtonModule,
+     MatBadgeModule,
+     MatDialogModule,
+     MatMenuModule,
+     MatIconModule,
+     MatBottomSheetModule,
+     MatTooltipModule,
+     MatDividerModule
+    ],
+    imports: [
     BrowserModule,
+    MatBadgeModule,
     AppRoutingModule,
+    MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule,
     ReactiveFormsModule,
     StoreModule.forRoot({
         movieItemState: _movieItemReducer,

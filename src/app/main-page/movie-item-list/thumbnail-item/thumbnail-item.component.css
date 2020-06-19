@@ -1,13 +1,78 @@
 .thumbnail-item-container {
-
-    border-bottom: 1px solid black;
-
+    width: 114px;
+    height: 154px;
+    border-radius: 10px;
+    padding: 2px;
+    margin: 1px;
 }
 
+.thumbnail-item-image {
+    width: 110px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 1px black;
+    cursor: pointer;
+    font-size: 2px;
+}
 
-.thumbnail-item-container .item-label {
-
+.item-label {
     font-family: 'Times';
-    font-size: 8px;
+    font-size: 4px;
+}
+
+.detail {
+    font-family: 'Times';
+    font-size: 12px;
+}
+
+
+/*   Dialog    */
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding: 0px;   
+}
+
+.header-label {
+    width: 600px;
+    text-align: left;
+    color: black;
+   
+}
+.header-close {
+    cursor: pointer;
+    transform: translateY(-20%);
+    color: black;
 
 }
+
+.toolTip { 
+    width: 110px;
+    height: 50px;
+    color: black;
+} 
+
+.mat-tooltip {
+    font-size: 8px;
+    color: black;
+}
+.mat-dialog-title {
+    text-align: left;
+    color: black;
+    padding-left: 4px;
+  }
+
+
+/* .mat-raised-button {
+    font-size: large;
+    background: hsla(0,0%,100%,0);
+    background-color: white;
+    margin: 1px;
+    color: black;
+ 
+} */
+
+

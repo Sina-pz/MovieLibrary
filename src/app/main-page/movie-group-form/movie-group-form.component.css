@@ -1,40 +1,82 @@
-.movie-group-container {
+.container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: white;
-    border: 1px solid;
+    background: #b4321bc7; 
+    box-shadow: 0 0 8px 0px black;
+    width: 230px;
+    border-radius: 4px;
+
 }
-.movie-group-header    {
+
+.header    {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
 }
-.group-header-label    {}
-.header-close-button   {}
-.movie-group-body      {
 
+* {
+    font-family: Helvetica,sans-serif;
+    font-size: 11px;
+}
+
+.header-label    {
+    font-size: 11px;
+    text-align: center;
+    padding-left: 30px;
+    color: white;
+    font-weight: bold;
+
+}
+
+.body      {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 4px;
-    border: 1px solid black;
+    padding-bottom: 8px;
+  
 }
-.row                   {
 
+.row   {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    padding-bottom: 1px;
 }
+
 .row-field-label       {
     padding: 2px;
+    padding-left: 2px;
+    color: white;
 }
 .row-field-value       {
-    padding-left: 1px;
-    border: 1px solid rgb(82, 81, 81);
+
+    padding-left: 20px;
+    transform: translateX(-20%);
+    border-radius: 30px;
+
 }
+
+input[type=text] {
+ 
+    background: hsla(0,0%,100%,0);
+    border: 1px solid white;
+    border-radius: 4px;
+    padding-bottom: 2px;
+}
+input[type=text]:focus {
+    
+    outline: 0;
+}
+
+::placeholder {
+    color: white;
+  }
+
 
 .movie-group-footer    {
     display: flex;
@@ -44,7 +86,26 @@
 
 .button {
     padding: 2px;
+    color: warn;
 }
+
+.mat-raised-button {
+
+    background: hsla(0,0%,100%,0);
+    background-color: unset;
+    font-display: block;
+    padding-left: 2px ;
+    padding-right: 2px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin: 1px;
+    color: white;
+    text-shadow: 0 0 5px black;
+}
+
+.custom-tooltip {}
+  
+
 
 
 

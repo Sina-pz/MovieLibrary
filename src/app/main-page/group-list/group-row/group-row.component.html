@@ -1,7 +1,9 @@
-<div class="group-row-container"
-appRowItem 
-[selected]="selected" > 
+<div class="group-row-container" appRowItem [selected]="selected">
     <div class="group-label" (click)="onClick();">
         {{group?.name}}
+        <!-- <p> 
+        <span *ngIf="group.name"   matBadge="({{filterMovieItemListNumber}})" matBadgeOverlap="true" >  {{group?.name}}</span>
+          </p> -->
     </div>
+    <mat-divider></mat-divider>
 </div>

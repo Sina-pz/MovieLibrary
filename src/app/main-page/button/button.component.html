@@ -1,5 +1,12 @@
 
-<div class="button-container" (click)="onClick();"> {{text}} </div>
+ <!-- <div class="button-container" (click)="onClick();"> {{text}} </div>   -->
+
+<div class="example-button-container" style="color:tomato;" >
+    <button mat-mini-fab color="primary" 
+    style="color: white ; font-size: small;" (click)="onClick();">
+        <mat-icon>{{text}}</mat-icon>
+    </button>
+  </div>
 
 
     

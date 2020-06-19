@@ -1,3 +1,4 @@
+import { MovieItem } from 'src/app/models/movie-item';
 import { MovieGroup } from 'src/app/models/movie-group';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -5,9 +6,7 @@ import { IAppState } from '../state-managment/states';
 import * as selectors from '../state-managment/states';
 import * as actions from '../state-managment/actions/movie-group.action';
 import { loadGroupList, editMovieGroup } from '../state-managment/actions/movie-group.action';
-import { loadMovieItemList } from '../state-managment/actions/movie-item.action';
-
-
+import { loadMovieItemList, selectMovieItem } from '../state-managment/actions/movie-item.action';
 
 
 @Component({
@@ -18,7 +17,9 @@ import { loadMovieItemList } from '../state-managment/actions/movie-item.action'
 export class MainPageComponent implements OnInit {
 
   public showGroupDialog: boolean;
+  public showMovieItemDialog: boolean;
   public selectedGroup: MovieGroup;
+  public selectedMovieItem: MovieItem;
   public ClickedEditButton: boolean;
   public ClickedAddButton: boolean;
 
@@ -28,28 +29,49 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadGroupList());
     this.store.dispatch(loadMovieItemList());
-    this.store.select(selectors.selectSelectedGroup).subscribe(list => this.fromGroupRow(list));
+    this.store.select(selectors.selectSelectedGroup).subscribe(group => this.fromGroupRow(group));
+    this.store.select(selectors.selectSelectedMovieItem).subscribe(item => this.fromMovieItem(item));
   }
 
   public onAddGroup() {
     this.store.dispatch(actions.selectGroup({selectedGroup: undefined}));
+    // this.store.dispatch(selectMovieItem({selectedMovieItem: undefined})); ?
     this.showGroupDialog = true;
   }
 
-  onEditGroup()  {
-    if (this.selectedGroup) {this.showGroupDialog = true; }
+  public onAddMovieItem() {
+    this.store.dispatch(selectMovieItem({selectedMovieItem: undefined}));
+    this.showMovieItemDialog = true;
+  }
+
+    onEditGroup()  {
+      this.showMovieItemDialog = false;
+      if (this.selectedGroup) {this.showGroupDialog = true; }
+    }
+
+    onEditMovieItem() {
+      this.showGroupDialog = false;
+      if (this.selectedMovieItem) {this.showMovieItemDialog = true; }
     }
 
   public fromGroupRow(group: MovieGroup) {
-    console.log('repeat');
     this.selectedGroup = group;
   }
 
-  public onCancelGroup() {
-    this.showGroupDialog = false;
+  public fromMovieItem(item: MovieItem ) {
+    this.selectedMovieItem = item;
   }
 
-  public onConfirmGroup() {
+  public onCancel() {
     this.showGroupDialog = false;
+    this.showMovieItemDialog = false;
+
   }
+
+  public onConfirm() {
+    this.showGroupDialog = false;
+    this.showMovieItemDialog = false;
+ }
+
+
 }

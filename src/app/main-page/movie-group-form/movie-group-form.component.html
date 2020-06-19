@@ -1,36 +1,106 @@
-<div class="movie-group-container">
-    <div class="movie-group-header">
-        <div class="group-header-label">
-            Group Form
-        </div>
-        <div class="header-close-button">
+<div class="container">
 
-        </div>
-    </div>
-    <form [formGroup]="selectedGroupFormGroup">
-        <div class="movie-group-body">
-            <div class="row">
-                <div class="row-field-label">
-                    Name
-                </div>
-                <div class="row-field-value">
-                    <input type="text" formControlName="name">
-                </div>
-            </div>
-            <div class="row">
-                <div class="row-field-label">
-                    Id
-                </div>
-             <!--    <div class="row-field-value">
-                  <input type="text" formControlName="id">   
 
-                </div> --> 
+    <div *ngIf="showGroupDialog; else elseBlock">
+        <!-- in case of group -->
+        <div class="header">
+            <div class="header-label">
+                Please Enter/Edit the MovieGroup
             </div>
         </div>
-    </form>
-
-    <div class="movie-group-footer">
-        <app-button class="button" [text]="'Cancel'" (buttonClick)="onCancelClick()"></app-button>
-        <app-button class="button" [text]="'Confirm'" (buttonClick)="onConfirmClick()"></app-button>
+        <form [formGroup]="selectedGroupFormGroup">
+            <div class="body">
+                <div class="row">
+                    <div class="row-field-label">
+                        Name
+                    </div>
+                    <div class="row-field-value">
+                        <input type="text"  placeholder="" formControlName="name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-field-label">
+                    </div>
+                    <!--    <div class="row-field-value">
+                          <input type="text"  placeholder="..." formControlName="id">       
+                        </div> -->
+                </div>
+            </div>
+        </form>
     </div>
+
+    <!-- in case of movieItemList -->
+    <ng-template #elseBlock>
+        <div class="header">
+            <div class="header-label">
+                Please Enter/Edit the MovieItem
+            </div>
+        </div>
+        <form [formGroup]="selectedMovieItemFormGroup">
+            <div class="body">
+                <div class="row">
+                    <div class="row-field-label">
+                        Name
+                    </div>
+                    <div class="row-field-value">
+                        <input type="text"  placeholder="" formControlName="name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-field-label">
+                        Duration
+                    </div>
+                    <div class="row-field-value">
+                        <input type="text"  placeholder="" formControlName="duration">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-field-label">
+                        Source
+                    </div>
+                    <div class="row-field-value">
+                        <input type="text"  placeholder="" formControlName="source">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-field-label">
+                        Detail
+                    </div>
+                    <div class="row-field-value">
+                        <input type="text"  placeholder="" formControlName="detail">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-field-label">
+                        GroupId
+                    </div>
+                    <div class="row-field-value">
+                        <input type="text"  placeholder="" formControlName="groupId">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+
+<!-- 
+
+ -->
+<!-- 
+    <div *ngIf="showGroupDialog; then thenBlock else elseBlock"></div>
+    // in case of groupList
+        <ng-template #thenBlock>
+
+        </ng-template>
+    // in case of movieItemList
+    <ng-template #elseBlock>
+
+    </ng-template>
+ -->
+
+<div class="movie-group-footer">
+    <button mat-raised-button  (click)="onCancelClick()">Cancel</button>
+    <button mat-raised-button  (click)="onConfirmClick()">Confirm</button>
+    <!-- <app-button class="button" [text]="'Cancel'" (buttonClick)="onCancelClick()"></app-button>
+        <app-button class="button" [text]="'Confirm'" (buttonClick)="onConfirmClick()"></app-button> -->
+</div>
 </div>
