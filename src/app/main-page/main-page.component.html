@@ -1,19 +1,18 @@
 <title>W3.CSS</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <div class="main-page-container">
 
     <div class="page-header">
 
         <div class=" col-left">
-
+<!--                         Menu                              -->
             <div class="example-button-container">
-                <button mat-mini-fab color="warn" [matMenuTriggerFor]="menu" aria-label="Example icon button with a menu icon">
+                <button mat-mini-fab color="warn" [matMenuTriggerFor]="menuMain" aria-label="Example icon button with a menu icon">
                     <mat-icon>filter_list</mat-icon>
                 </button>
             </div>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+            <mat-menu #menuMain="matMenu">
+                <button mat-menu-item disabled> 
                   <mat-icon class="menu-general-mat-icon">dialpad</mat-icon>
                   <span class="menu-general-span">Redial</span>
                 </button>
@@ -21,17 +20,12 @@
                   <mat-icon>voicemail</mat-icon>
                   <span>Check voice mail</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item disabled>
                   <mat-icon>notifications_off</mat-icon>
                   <span>Disable alerts</span>
                 </button>
               </mat-menu>
-            <!-- <div id="change-toggle" class="toggle-container" onclick="myFunction()">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div> 
-            </div> -->
-
+<!--                                   -->
             <div class="header-label">
                 Public Library Video Online
             </div>
@@ -39,38 +33,92 @@
 
         <div class=" col-right">
             <div class="header-search">
-
-                <input type="text" placeholder="Search.." name="searchedName">
+                <input type="text" placeholder="Search.." (keydown.enter)="searchedNameF($event)" name="searchedName">
                 <!---->
             </div>
-
             <div class="header-empty">
-                <!-- -->
+                <!-- -->               
             </div>
             <div class="header-home-button">
-                <div class="material-icons w3-Icons"
-                    style="cursor: pointer;color:white;font-size:large;position:relative;padding-left:1px;padding-top: 12px;"
-                    onclick="onHomeClick()"
-                    > home </div>
-                <!--<mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
+              <!-- <button mat-mini-fab color="warn" onclick="onHomeClick()" aria-label="Example icon button with a menu icon" >
+                                <mat-icon >home</mat-icon>
+                            </button> -->
+              <button mat-mini-fab color="warn" [matMenuTriggerFor]="menuHome" aria-label="Example icon button with a menu icon">
+                <mat-icon>home</mat-icon>
+              </button>
+              <mat-menu #menuHome="matMenu" >
+                <button mat-menu-item (click)="$event.stopPropagation();">
+                  <mat-icon class="menu-general-mat-icon">home</mat-icon>
+                  <!-- <span class="menu-general-span" routerLink="https://www.arungudelli.com">home</span> -->
+                  <a style="color: blue;" href="http://localhost:4200/"> home </a>
+                </button>
+              </mat-menu>
+              <!-- <div class="material-icons w3-Icons"
+                                style="cursor: pointer;color:white;font-size:large;position:relative;padding-left:1px;padding-top: 12px;"
+                                > home </div> -->
             </div>
 
-            <div class="header-login-button">
+                <div class="header-login-button">
+                    <button mat-mini-fab color="warn" [matMenuTriggerFor]="menuLogin" aria-label="Example icon button with a menu icon">
+                        <mat-icon>person</mat-icon>
+                    </button>
+                </div>
+                <mat-menu class="mat-menu" #menuLogin="matMenu">
 
-                <div class=" material-icons "
+                    <mat-card class="example-card" >
+                        <mat-card-header (click)="$event.stopPropagation();">
+                          <mat-card-title>Login</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                          <form class="example-form">
+                            <table class="example-full-width" cellspacing="0">
+                              <tr>
+                                <td>
+                                  <mat-form-field class="example-full-width" (click)="$event.stopPropagation();">
+                                  <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                                  </mat-form-field>
+                                </td>
+                              </tr>
+                              <tr>
+                              <td><mat-form-field class="example-full-width" (click)="$event.stopPropagation();">
+                                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                              </mat-form-field></td>
+                            </tr></table>
+                          </form>
+                          
+                        </mat-card-content>
+                        <mat-card-actions>
+                          <button mat-raised-button (click)="login()" color="primary">Login</button>
+                        </mat-card-actions>
+                      </mat-card>
+
+                  </mat-menu>
+
+                <!-- <div class=" material-icons "
                     style="cursor: pointer;color:white;font-size:large;position:relative;padding-left:3px;padding-top: 12px;"
                     onclick="onLoginClick()"
-                    > person </div>
+                    > person </div> -->
                 <!-- <i class="material-icons">search</i> -->
-            </div>
+            
         </div>
 
     </div>
 
     <div class="page-content">
-     <app-group-list (addGroup)="onAddGroup();" (editGroup)="onEditGroup();"></app-group-list>
-     
-     <app-movie-item-list (addMovieItem)="onAddMovieItem();" (editMovieItem)="onEditMovieItem();"></app-movie-item-list>
+      <app-group-list (addGroup)="onAddGroup();" (editGroup)="onEditGroup();"></app-group-list>
+
+      <app-movie-item-list *ngIf="showMovieItemList" (addMovieItem)="onAddMovieItem();"
+        (editMovieItem)="onEditMovieItem();"></app-movie-item-list>
+
+      <!-- on and off showing foundMovieItem -->
+      <div class="search-result" *ngIf="showFoundMovieItem">
+        <div class="toolTip" matTooltip=" DoubleClick for Detail">
+          <img src="{{foundMovieItem.source}}" class="thumbnail-item-image">
+        </div>
+        <div class="header-close">
+          <mat-icon (click)="onCloseClick()">close</mat-icon>
+        </div>
+      </div>
     </div>
 
     <div class="page-dialogs">

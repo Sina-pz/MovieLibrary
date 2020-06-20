@@ -70,7 +70,15 @@ export const _movieItemReducer = createReducer(initialMovieItemState,
       selectedMovieItem: action.selectedMovieItem
     };
   }),
-  /////////////////////////
+  ///////////////////////// findSearchedMovieItem
+  on(actions.findSearchedMovieItem, (oldState, action) => {
+    const searchedMovieItem = oldState.movieItemList.filter(item => item.name === action.searchedMovieItemName);
+    return {
+      ...oldState,
+      searchedMovieItem: searchedMovieItem[0]
+    };
+  }),
+  ////////
   on(actions.editMovieItemSuccess, (oldState, action) => {
     const temporaryItemList = oldState.movieItemList.map(item => item);
     const newMovieItemList = temporaryItemList.filter(item => item.id !== oldState.selectedMovieItem.id);

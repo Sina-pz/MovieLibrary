@@ -39,6 +39,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {FormsModule} from '@angular/forms';
 
 
 // import {DemoMaterialModule} from './material-module';
@@ -59,12 +63,15 @@ import {MatMenuModule} from '@angular/material/menu';
     MaterialElevationDirective
        ],
     exports: [
-     // MatIconModule
      MatButtonModule,
      MatBadgeModule,
      MatDialogModule,
      MatMenuModule,
      MatIconModule,
+     MatProgressSpinnerModule,
+     MatInputModule,
+     MatFormFieldModule,
+     FormsModule,
      MatBottomSheetModule,
      MatTooltipModule,
      MatDividerModule
@@ -75,9 +82,13 @@ import {MatMenuModule} from '@angular/material/menu';
     AppRoutingModule,
     MatDialogModule,
     MatIconModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
     MatButtonModule,
     MatTooltipModule,
     MatCardModule,
+    MatFormFieldModule,
+    FormsModule,
     MatMenuModule,
     MatIconModule,
     MatDividerModule,

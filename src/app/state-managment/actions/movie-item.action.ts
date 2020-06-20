@@ -21,6 +21,7 @@ export enum MovieItemActionName {
     Edit          = '[MovieGroup] Edit MovieItem',
     EditSuccess   = '[MovieGroup] Edit MovieItem Success',
     EditFailed    = '[MovieGroup] Edit MovieItem Failed',
+    Find          = '[MovieGroup] Find MovieItem',
 }
 
 export const loadMovieItemList = createAction(MovieItemActionName.LoadMovieItemList);
@@ -54,6 +55,9 @@ export const removeItemFailed = createAction(MovieItemActionName.RemoveFailed,
 export const editMovieItem = createAction(MovieItemActionName.Edit,
         props<{ item: MovieItem }>());
 export const editMovieItemSuccess = createAction(MovieItemActionName.EditSuccess,
-        props<{ item: MovieItem }>());
+    props<{ item: MovieItem }>());
 export const editMovieItemFailed = createAction(MovieItemActionName.EditFailed,
-        props<{ message: string }>());
+    props<{ message: string }>());
+
+export const findSearchedMovieItem = createAction(MovieItemActionName.Find,
+    props<{ searchedMovieItemName: string }>());

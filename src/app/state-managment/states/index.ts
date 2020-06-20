@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 // tslint:disable-next-line: max-line-length
-import { IMovieItemState, getFilteredMovieItemList, getSelectedMovieItem, getMovieItemList, getFilteredMovieItemListNumber } from './movie-item.state';
+import { IMovieItemState, getFilteredMovieItemList, getSelectedMovieItem, getMovieItemList, getFilteredMovieItemListNumber, getSearchedMovieItem } from './movie-item.state';
 import { IMovieGroupState, getGroupList, getSelectedGroupId, getSelectedGroup } from './movie-group.state';
 
 export interface IAppState {
@@ -18,3 +18,7 @@ export const selectFilteredMovieItemList = createSelector(selectMovieItemState, 
 export const selectFilteredMovieItemListNumber = createSelector(selectMovieItemState, getFilteredMovieItemListNumber);
 export const selectSelectedMovieItem = createSelector(selectMovieItemState, getSelectedMovieItem);
 export const selectMovieItemList = createSelector(selectMovieItemState, getMovieItemList);
+export const selectSearchedMovieItem = createSelector(selectMovieItemState, getSearchedMovieItem);
+
+
+
