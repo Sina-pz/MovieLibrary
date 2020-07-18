@@ -3,6 +3,8 @@ export class MovieItem {
     public name: string;
     public groupId: number;
     public duration: number;
+    public source: string;
+    public detail: string;
 
     constructor() {}
 }

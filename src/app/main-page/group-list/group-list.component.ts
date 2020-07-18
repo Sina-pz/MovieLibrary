@@ -1,5 +1,5 @@
+import { MovieGroup } from './../../models/movie-group';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { MovieGroup } from 'src/app/models/movie-group';
 import { IAppState } from 'src/app/state-managment/states';
 import { Store } from '@ngrx/store';
 import * as selectors from '../../state-managment/states';
@@ -13,9 +13,12 @@ import * as actions from '../../state-managment/actions/movie-group.action';
 })
 export class GroupListComponent implements OnInit {
 
+  @Output() public addGroup = new EventEmitter<any>();
+  @Output() public editGroup = new EventEmitter<any>();
   public groupList: MovieGroup[];
-  public readonly addButtonLabel = 'Add';
-  public readonly removeButtonLabel = 'Rmv';
+  public readonly addButtonLabel = 'plus_one';
+  public readonly removeButtonLabel = 'delete';
+  public readonly editButtonLabel = 'edit';
   public selectedId: number;
 
   // @Output()
@@ -34,26 +37,31 @@ export class GroupListComponent implements OnInit {
   }
 
   onAddButtonClick() {
-    console.log('hi addGroup click');
-    this.store.dispatch(actions.createMovieGroup({
-      group: new MovieGroup()
-    }));
-    // (clickedButton)="onButtonSelect($event)"
-    // this.groupIdSelect = groupId;
-    // console.log('click on a group which is:' + groupId);
-  }
+    this.addGroup.emit();
 
-  onGroupSelect(id: number) {
-    this.selectedId = id;
+    // this.store.dispatch(actions.createMovieGroup({
+    //   group: new MovieGroup()
+    // }));
+
   }
 
   onRmvButtonClick() {
+
     // this.logic.removeGroup();
     console.log('hi removeGroup click');
     // (clickedButton)="onButtonSelect($event)"
     //  this.groupIdSelect = groupId;
     //  console.log('click on a group which is:' + groupId);
-    this.store.dispatch(actions.removeGroup({ selectedId: this.selectedId }));
+    this.store.dispatch(actions.removeGroup());
+
   }
+
+  onEditButtonClick() {
+    this.editGroup.emit();
+  }
+
+ public onGroupSelect(id: number) {
+   this.selectedId = id;
+ }
 
 }

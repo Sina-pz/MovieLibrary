@@ -3,14 +3,15 @@ import { MovieGroup } from './../models/movie-group';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { MovieItem } from '../models/movie-item';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  private movieItemList: MovieItem[];
-  private groupList: MovieGroup[];
+  public movieItemList: MovieItem[];
+  public groupList: MovieGroup[];
 
   constructor() {}
 
@@ -19,43 +20,63 @@ export class HttpService {
     this.movieItemList = db.getMovieItemList();
     return of<MovieItem[]>(this.movieItemList);
     // return this.http.get('/movies');
-    console.log('hi new movieItemList');
+    // console.log('hi new movieItemList');
   }
 
   public getMovieGroupList(): Observable<MovieGroup[]> {
     const db = new MockDB();
     this.groupList = db.getGroupList();
     return of<MovieGroup[]>(this.groupList);
-    console.log('hi new groupList');
+    // console.log('hi new groupList');
   }
 
-  public creatMovieItem(item: MovieItem): Observable<MovieItem> {
-    const db = new MockDB();
-    // const randomMovieItem = db.getRandomMovieItemList()[Math.floor(Math.random() * db.getRandomMovieItemList().length)];
-    // this.movieItemList.push(randomMovieItem);
-    return of<MovieItem>(db.getRandomMovieItemList()[Math.floor(Math.random() * db.getRandomMovieItemList().length)]);
+  public creatMovieItem(item: MovieItem, selectedGroupId: number) {
+    // const db = new MockDB();
+    // db.getRandomMovieItemList()[Math.floor(Math.random() * db.getRandomMovieItemList().length)]
+  return of({ item: item , selectedId: selectedGroupId});
   }
 
   public creatGroup(group: MovieGroup): Observable<MovieGroup> {
-    const db = new MockDB();
-    return of<MovieGroup>(db.getRandomGroupList()[Math.floor(Math.random() * db.getRandomGroupList().length)]);
+    // const db = new MockDB();
+    // const randomGroup = db.getRandomGroupList()[Math.floor(Math.random() * db.getRandomGroupList().length)];
+    return of<MovieGroup>(group);
   }
 
-  public removeMovieItem(selectedMovieItemId: number): Observable<MovieItem[]> {
-      for (let index = 0; index < this.movieItemList.length; index++) {
-        if (selectedMovieItemId === this.movieItemList[index].groupId) {
-          return of<MovieItem[]>(this.movieItemList.splice(index, 1));
-        }
-      }
+  public editGroup(group: MovieGroup): Observable<MovieGroup> {
+    // const successMessage = true;
+    // call backend for updating the group
+    // take the answer : (updatedGroup) || (boolean)
+    return of<MovieGroup>(group);
   }
 
-  public removeGroup(selectedGroupId: number): Observable<MovieGroup[]> {
-      for (let index = 0; index < this.groupList.length; index++) {
-        if (selectedGroupId === this.groupList[index].id) {
-          return of<MovieGroup[]>(this.groupList.splice(index, 1));
-        }
-      }
-    }
+  public editMovieItem(item: MovieItem): Observable<MovieItem> {
+    // const successMessage = true;
+    // call backend for updating the group
+    // take the answer : (updatedGroup) || (boolean)
+    return of<MovieItem>(item);
+  }
 
+
+  public removeMovieItem(): Observable<boolean> {
+      // for (let index = 0; index < filteredMovieItemList.length; index++) {
+      //   if (selectedMovieItemId === filteredMovieItemList[index].groupId) {
+      //     const newGroupList = filteredMovieItemList.map(group => group);
+      //     newGroupList.splice(index, 1);
+      const successMessage = true;
+      return of<boolean>(successMessage);
+        }
+
+  public removeGroup(): Observable<boolean> {
+
+    // for (let index = 0; index < this.groupList.length; index++) {
+    //   if (selectedGroupId === updatedGroupList[index].id) {
+    //     // const newGroupList = groupList.map(group => group); read only property can not change
+    //     const newGroupList = updatedGroupList.map(group => group);
+    //     newGroupList.splice(index, 1);
+           const successMessage = true;
+           return of<boolean>(successMessage);
+        //  this.groupList.filter( group =>  group.id !== selectedGroupId)
+        //     return of<MovieGroup[]>();
+      }
 
 }

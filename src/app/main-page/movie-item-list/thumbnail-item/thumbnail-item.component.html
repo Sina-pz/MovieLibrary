@@ -1,6 +1,15 @@
-<div class="thumbnail-item-container" *ngIf="movieItem" >
-    <div class="item-label" (click)="onClick();">
-        {{movieItem.name}}
+<div class="thumbnail-item-container " *ngIf="movieItem"  (click)="onClick();"
+    (dblclick)="onDetailClick();">
+    <!-- <div class="item-label" >
+          {{movieItem.name}}  
+    </div>-->
+    <div class="toolTip" matTooltip=" DoubleClick for Detail">
+
+        <img src="{{movieItem.source}}" class="thumbnail-item-image">
+
     </div>
 
+
+
 </div>
+<!-- (click)="openDialog()" matTooltipClass="custom-tooltip" appMaterialElevation -->

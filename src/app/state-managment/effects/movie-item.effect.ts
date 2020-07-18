@@ -33,15 +33,14 @@ export class MovieItemEffects {
   )
 );
 
-
 ///////////////////
 creatMovie$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.createMovieItem),
   mergeMap(action =>
-    this.httpService.creatMovieItem(action.item).pipe(
-      map(movieItem => {
-        return actions.createMovieItemSuccess({item: movieItem});
+    this.httpService.creatMovieItem(action.item, action.selectedGroupId).pipe(
+      map( props => {
+        return actions.createMovieItemSuccess({item: props.item, selectedGroupId: props.selectedId });
       }),
       catchError((error: Error) => {
         return of(actions.createMovieItemFailed(error));
@@ -55,9 +54,9 @@ removeItem$ = createEffect(() =>
 this.actions$.pipe(
   ofType(actions.removeItem),
   mergeMap(action =>
-    this.httpService.removeMovieItem(action.selectedMovieItemId).pipe(
-      map(movieItems => {
-        return actions.removeItemSuccess({items: movieItems});
+    this.httpService.removeMovieItem().pipe(
+      map(message => {
+        return actions.removeItemSuccess({successMessage: message});
       }),
       catchError((error: Error) => {
         return of(actions.removeItemFailed(error));
@@ -66,5 +65,15 @@ this.actions$.pipe(
   )
 )
 );
+/////////////
+editMovieItem$ = createEffect(() => this.actions$.pipe(
+  ofType(actions.editMovieItem),
+  mergeMap(action => this.httpService.editMovieItem(action.item).pipe(
+    map(newItem => {
+      return actions.editMovieItemSuccess({ item: newItem });
+    }), catchError((error: Error) => {
+      return of(actions.editMovieItemFailed(error));
+    })))));
+//////////////////
 
 }

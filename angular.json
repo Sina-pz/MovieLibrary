@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -88,6 +89,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -122,8 +124,11 @@
     }
   },
   "defaultProject": "my-app-sina",
+  
   "cli": {
     "defaultCollection": "@ngrx/schematics",
     "analytics": "462aadc7-2fd3-445a-85fe-4bfd69875af1"
+
   }
+
 }

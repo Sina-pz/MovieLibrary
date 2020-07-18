@@ -1,17 +1,24 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="group-list-container" *ngIf="groupList">
-    <!-- {{'access to variables: method A (within the body)' + groupNameList[0]}} -->
+    <!-- {{'access to variables: method A (within the body)' + groupNameList[0]}} --> 
+
+    
+    <div class="group-list-img">
+        <img src="https://movieandgamesdigitallibrary.files.wordpress.com/2015/02/cropped-movie-library-1.jpg"
+         class="w3-circle" width="110" height="110">
+    </div>
+
     <div class="group-row">
-        <app-group-row *ngFor="let group of groupList" 
-        [group]="group" 
-        (idSelect)="onGroupSelect($event)"
-        [selected]="selectedId === group.id"></app-group-row>
+         <app-group-row *ngFor="let group of groupList" [group]="group"
+        (idSelect) = "onGroupSelect($event)" 
+        [selected]="selectedId === group.id"
+         ></app-group-row>
     </div>
 
     <div class="button-bar">
-
-        <app-button [text]="addButtonLabel"    (buttonClick)="onAddButtonClick()"></app-button>
+        <app-button [text]="addButtonLabel"    (buttonClick)="onAddButtonClick()"></app-button> 
         <app-button [text]="removeButtonLabel" (buttonClick)="onRmvButtonClick()"></app-button>
-
+        <app-button [text]="editButtonLabel"   (buttonClick)="onEditButtonClick()" ></app-button>
     </div>
 
 </div>

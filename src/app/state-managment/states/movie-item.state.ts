@@ -3,15 +3,21 @@ import { MovieItem } from 'src/app/models/movie-item';
 export interface IMovieItemState {
 movieItemList: MovieItem[];
 filteredMovieItemList: MovieItem[];    // from groupList
-selectedMovieItemId: number;           // for remove
+filteredMovieItemListNumber: number;
+selectedMovieItem: MovieItem;           // for remove
+searchedMovieItem: MovieItem;
 }
 
 export const initialMovieItemState: IMovieItemState = {
     movieItemList : undefined,
     filteredMovieItemList: undefined,
-    selectedMovieItemId : undefined
+    filteredMovieItemListNumber: undefined,
+    selectedMovieItem : undefined,
+    searchedMovieItem: undefined
 };
 
 export const getMovieItemList = (state: IMovieItemState) => state.movieItemList; // page is loading //\\//
 export const getFilteredMovieItemList = (state: IMovieItemState) => state.filteredMovieItemList;
-export const getSelectedMovieItemId = (state: IMovieItemState) => state.selectedMovieItemId;
+export const getFilteredMovieItemListNumber = (state: IMovieItemState) => state.filteredMovieItemListNumber;
+export const getSelectedMovieItem = (state: IMovieItemState) => state.selectedMovieItem;
+export const getSearchedMovieItem = (state: IMovieItemState) => state.searchedMovieItem;

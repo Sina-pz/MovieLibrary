@@ -12,11 +12,14 @@ export enum MovieGroupActionName {
         CreateSuccess = '[MovieGroup] Create MovieGroup Success',
         CreateFailed  = '[MovieGroup] Create MovieGroup Failed',
         SelectGroupId = '[MovieGroup] Select GroupId',
+        SelectGroup   = '[MovieGroup] Select Group',
         Remove        = '[MovieGroup] Remove MovieGroup',
         RemoveSuccess = '[MovieGroup] Remove MovieGroup Success',
         RemoveFailed  = '[MovieGroup] Remove MovieGroup Failed',
+        Edit          = '[MovieGroup] Edit MovieGroup',
+        EditSuccess   = '[MovieGroup] Edit MovieGroup Success',
+        EditFailed    = '[MovieGroup] Edit MovieGroup Failed',
 }
-
 
 export const loadGroupList = createAction(MovieGroupActionName.LoadGroupList);
 export const loadGroupListSuccess = createAction(MovieGroupActionName.LoadGroupListSuccess,
@@ -33,11 +36,20 @@ export const createMovieGroupFailed = createAction(MovieGroupActionName.CreateFa
 
 export const selectGroupId = createAction(MovieGroupActionName.SelectGroupId,
         props<{selectedGroupId: number}>());
+export const selectGroup = createAction(MovieGroupActionName.SelectGroup,
+        props<{selectedGroup: MovieGroup}>());
 
-export const removeGroup = createAction(MovieGroupActionName.Remove,
-        props<{ selectedId: number }>());
-export const removeSuccess = createAction(MovieGroupActionName.RemoveSuccess,
-        props<{groups: MovieGroup[]}>());
-export const removeFailed = createAction(MovieGroupActionName.RemoveFailed,
-        props<{message: string}>());
+export const removeGroup = createAction(MovieGroupActionName.Remove);
+        // props<{ selectedId: number }>());
+export const removeGroupSuccess = createAction(MovieGroupActionName.RemoveSuccess,
+        props<{ successMessage: boolean }>());
+export const removeGroupFailed = createAction(MovieGroupActionName.RemoveFailed,
+        props<{ message: string }>());
+
+export const editMovieGroup = createAction(MovieGroupActionName.Edit,
+        props<{ group: MovieGroup }>());
+export const editMovieGroupSuccess = createAction(MovieGroupActionName.EditSuccess,
+        props<{ group: MovieGroup }>());
+export const editMovieGroupFailed = createAction(MovieGroupActionName.EditFailed,
+        props<{ message: string }>());
 

@@ -1,12 +1,35 @@
 .group-row-container {
-    border-bottom: 1px solid black;
-
+  /*  border-bottom: 1px solid black; */
+  cursor: pointer;
+  align-content: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
+* {
+    font-family: Helvetica,sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #323335;
+ }
 .group-label {
-    font-family: 'Times';
-    font-size: 8px;
-        
+
+padding-left: 4px;        
 }
 .selected {
-    background-color: black;;
+    box-shadow: 0 0 3px 1px #656363;
 }
+
+.hoveClass {
+background-color: tomato;
+}
+
+/* disabled  */
+.mat-badge-content {
+
+  background-color:transparent;
+  color: purple;
+  position: relative;
+
+  width: 17px;
+  height: 17px;
+  }

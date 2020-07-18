@@ -1,3 +1,4 @@
+/*
 .button-container {
     
     background-color: rgb(230, 228, 228);
@@ -6,12 +7,28 @@
     color: black;
     padding: 1px;
      border: 1px solid rgb(66, 65, 65); 
-     width: 50px;     
-
-    
-
-}
-
+     width: 40px;     
+ }
 div:hover {
     border: black;
   }
+  */
+  .mat-mini-fab {
+  background-color: #b4321b;
+  width: 40px;
+  height: 40px;
+  line-height: 20px;
+  min-height: 20px;
+  vertical-align: top;
+  font-size: 10px;
+  padding: 0 0;
+  margin: 0;
+  }
+  .mat-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    padding: 0 0;
+    margin: 0;
+  }
+  
