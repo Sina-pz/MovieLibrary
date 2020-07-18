@@ -5,7 +5,7 @@
     <div class="page-header">
 
         <div class=" col-left">
-<!--                         Menu                              -->
+<!--                      Menu                       -->
             <div class="example-button-container">
                 <button mat-mini-fab color="warn" [matMenuTriggerFor]="menuMain" aria-label="Example icon button with a menu icon">
                     <mat-icon>filter_list</mat-icon>
@@ -43,27 +43,29 @@
               <!-- <button mat-mini-fab color="warn" onclick="onHomeClick()" aria-label="Example icon button with a menu icon" >
                                 <mat-icon >home</mat-icon>
                             </button> -->
-              <button mat-mini-fab color="warn" [matMenuTriggerFor]="menuHome" aria-label="Example icon button with a menu icon">
+              <button mat-mini-fab color="warn"  aria-label="Example icon button with a menu icon">  <!-- [matMenuTriggerFor]="menuHome"-->
                 <mat-icon>home</mat-icon>
               </button>
-              <mat-menu #menuHome="matMenu" >
+ <!--
+              <mat-menu #menuHome="matMenu">
                 <button mat-menu-item (click)="$event.stopPropagation();">
                   <mat-icon class="menu-general-mat-icon">home</mat-icon>
-                  <!-- <span class="menu-general-span" routerLink="https://www.arungudelli.com">home</span> -->
+                   <span class="menu-general-span" routerLink="https://www.arungudelli.com">home</span> // this line is belong to last version
                   <a style="color: blue;" href="http://localhost:4200/"> home </a>
                 </button>
-              </mat-menu>
+              </mat-menu>   --> 
+                  
               <!-- <div class="material-icons w3-Icons"
                                 style="cursor: pointer;color:white;font-size:large;position:relative;padding-left:1px;padding-top: 12px;"
                                 > home </div> -->
             </div>
-
+                         
                 <div class="header-login-button">
-                    <button mat-mini-fab color="warn" [matMenuTriggerFor]="menuLogin" aria-label="Example icon button with a menu icon">
+                    <button mat-mini-fab color="warn"  aria-label="Example icon button with a menu icon">  <!-- [matMenuTriggerFor]="menuLogin"  -->
                         <mat-icon>person</mat-icon>
                     </button>
                 </div>
-                <mat-menu class="mat-menu" #menuLogin="matMenu">
+                <!-- <mat-menu class="mat-menu" #menuLogin="matMenu">
 
                     <mat-card class="example-card" >
                         <mat-card-header (click)="$event.stopPropagation();">
@@ -92,7 +94,7 @@
                         </mat-card-actions>
                       </mat-card>
 
-                  </mat-menu>
+                  </mat-menu> -->
 
                 <!-- <div class=" material-icons "
                     style="cursor: pointer;color:white;font-size:large;position:relative;padding-left:3px;padding-top: 12px;"

@@ -16,7 +16,7 @@
  
     display: flex ;
     flex-wrap:  wrap;
-    height: calc(100vh - 34px);
+    height: calc(100vh - 123px);
     padding: 2px;
     /* border: 1px solid   black; */
     border-left: 1px solid #afafaf21;

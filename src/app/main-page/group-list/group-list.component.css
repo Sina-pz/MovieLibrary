@@ -22,10 +22,8 @@ margin-bottom: 12px;
 .group-row {
   padding-top: 6px;
 
-    height: calc(100vh - 160px);
+    height: calc(100vh - 252px);
     overflow: auto;
-    
-
 }
 
 .group-list-container
