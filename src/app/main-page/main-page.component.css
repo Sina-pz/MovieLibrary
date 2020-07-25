@@ -179,6 +179,12 @@ input[type=text]:focus {
   flex-direction: row;
 }
 
+
+
+
+
+
+
 .header-close {
   position: relative;
   right: -1040px;
