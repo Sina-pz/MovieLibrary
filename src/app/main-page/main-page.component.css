@@ -126,11 +126,13 @@
     border: 2px solid white;
 }
 
+
 .page-header .col-right 
 input[type=text]:focus {
   width: 230px;
   outline: 0;
 } 
+
 ::placeholder {
   color: white;
   font-size: larger;
@@ -141,7 +143,7 @@ input[type=text]:focus {
   position: relative;
   padding-top: 7px;
 /*  border: 1px solid black; */
-  width:940px;
+  width:1482px;
 }
 
 .page-header .col-right 
@@ -160,6 +162,7 @@ input[type=text]:focus {
  padding-top: 3px;
  width :30px;
   }
+
   .mat-menu {
     background-color: transparent;
   }
@@ -170,10 +173,12 @@ input[type=text]:focus {
      /* height: calc(100vh - 20px);  */
     /* border: 1px solid red; */
 }
+
 .search-result {
   display: flex;
   flex-direction: row;
 }
+
 .header-close {
   position: relative;
   right: -1040px;
@@ -183,9 +188,8 @@ input[type=text]:focus {
   width: 10px;
   height: 10px;
   color: #b4321bc7;
- 
-
 }
+
 .page-dialogs { }
 
 .dialog {
